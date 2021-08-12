@@ -1,0 +1,10 @@
+.profile {
+  position: relative;
+  z-index: 0;
+  margin: 40px auto 0;
+  display: grid;
+  grid-template-columns: 120px 1fr 150px;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+}
