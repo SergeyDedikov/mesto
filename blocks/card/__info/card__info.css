@@ -1,0 +1,7 @@
+.card__info {
+  margin: 25px 20px 30px;;
+  display: grid;
+  grid-template-columns: 85% 15%;
+  justify-content: space-between;
+  align-items: baseline;
+}
