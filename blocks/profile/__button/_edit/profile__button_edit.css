@@ -5,3 +5,10 @@
   background-image: url(../../../../images/icon-button-edit.svg);
   align-self: baseline;
 }
+
+@media screen and (max-width: 560px) {
+  .profile__button_edit {
+    width: 18px;
+    height: 18px;
+  }
+}

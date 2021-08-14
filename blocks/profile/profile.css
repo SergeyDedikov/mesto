@@ -8,3 +8,30 @@
   justify-content: space-between;
   align-items: center;
 }
+
+@media screen and (max-width: 900px) {
+  .profile {
+    grid-template-columns: 120px 2.35fr 1fr;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .profile {
+    grid-template-columns: 120px 1fr;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .profile {
+    gap: 0;
+    margin-top: 42px;
+  }
+}
