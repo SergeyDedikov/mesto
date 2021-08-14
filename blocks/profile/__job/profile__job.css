@@ -1,7 +1,8 @@
-.profile__description {
-  margin: 16px 0 0;
+.profile__job {
+  margin: 0;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 1.22;
+  grid-column: 1 / 3;
 }
