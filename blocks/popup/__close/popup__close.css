@@ -6,7 +6,8 @@
   position: absolute;
   top: -40px;
   right: -40px;
-  background: center / contain no-repeat url(../../../images/icon-close-form.svg);
+  background: center / contain no-repeat
+    url(../../../images/icon-close-form.svg);
   border: none;
 }
 
