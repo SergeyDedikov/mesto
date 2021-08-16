@@ -2,4 +2,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: ease-in-out fadeIn 0.3s;
 }
