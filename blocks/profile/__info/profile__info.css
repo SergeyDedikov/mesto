@@ -1,15 +1,9 @@
 .profile__info {
   max-width: 100%;
   display: grid;
-  grid-template-columns: minmax(53%, 1fr) minmax(25px, 43%);
+  grid-template-columns: minmax(auto, 295px) auto;
   column-gap: 18px;
   row-gap: 7px;
-}
-
-@media screen and (max-width: 1180px) {
-  .profile__info {
-    grid-template-columns: 1fr 50px;
-  }
 }
 
 @media screen and (max-width: 560px) {
