@@ -1,6 +1,7 @@
 .popup_opened {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: ease-in-out fadeIn 0.3s;
+  visibility: visible;
+  transform: scale(1);
+  opacity: 1;
+  transition-delay: 0s, 0s;
+  transition-timing-function: ease-in;
 }
