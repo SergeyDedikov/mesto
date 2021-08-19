@@ -1,6 +1,6 @@
 let formElement = document.querySelector(".popup__container");
-let nameInput = formElement.querySelector(".form__item_name");
-let jobInput = formElement.querySelector(".form__item_job");
+let nameInput = formElement.querySelector(".popup__item_name");
+let jobInput = formElement.querySelector(".popup__item_job");
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
