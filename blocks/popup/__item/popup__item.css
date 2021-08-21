@@ -1,5 +1,5 @@
 .popup__item {
-  height: 27px;
+  min-height: 27px;
   border: 0;
   padding: 0 0 7px;
   margin: 0 0 30px;

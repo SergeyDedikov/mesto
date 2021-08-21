@@ -1,13 +1,13 @@
 .header {
   position: relative;
-  height: 74px;
+  min-height: 74px;
   margin: 45px auto 0;
   border-bottom: 1px solid #545454b3;
 }
 
 @media screen and (max-width: 460px) {
   .header {
-    height: 56px;
+    min-height: 56px;
     margin: 28px -19px 0;
   }
 }
