@@ -1,4 +1,7 @@
 .card__like {
+  margin: 0;
+  padding: 0;
+  border: none;
   position: relative;
   width: 22px;
   height: 19px;
