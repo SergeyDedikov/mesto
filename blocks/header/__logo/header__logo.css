@@ -1,7 +1,9 @@
 .header__logo {
+  display: block;
   position: relative;
   width: 142px;
   height: 33px;
+  margin-bottom: 41px;
 }
 
 @media screen and (max-width: 460px) {
@@ -9,5 +11,6 @@
     transform: scale(0.73);
     transform-origin: top left;
     margin-left: 27px;
+    margin-bottom: 23px;
   }
 }
