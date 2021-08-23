@@ -28,18 +28,6 @@
         <button class="profile__button profile__button_type_add" type="button"></button>
       </section>
 
-      <section class="popup" aria-label="Редактировать профиль">
-        <form class="popup__container">
-          <h2 class="popup__heading">Редактировать профиль</h2>
-          <fieldset class="popup__input-container">
-            <input class="popup__item popup__item_name" type="text" name="name" value="Жак-Ив Кусто">
-            <input class="popup__item popup__item_job" type="text" name="job" value="Исследователь океана">
-          </fieldset>
-          <button class="popup__button popup__button_submit" type="submit">Сохранить</button>
-          <button class="popup__button popup__button_close" type="reset"></button>
-        </form>
-      </section>
-
       <section class="cards" aria-label="Карточки мест">
         <ul class="cards__list">
           <li>
@@ -121,6 +109,21 @@
     </footer>
 
   </div>
+  
+  <div class="popup" aria-label="Редактировать профиль">
+    <div class="popup__container">
+      <form name="edit-profile">
+        <h2 class="popup__heading">Редактировать профиль</h2>
+        <fieldset class="popup__input-container">
+          <input class="popup__item popup__item_value_name" type="text" name="name" value="Жак-Ив Кусто">
+          <input class="popup__item popup__item_value_job" type="text" name="job" value="Исследователь океана">
+        </fieldset>
+        <button class="popup__button popup__button_submit" type="submit">Сохранить</button>
+        <button class="popup__button popup__button_close" type="button"></button>
+      </form>
+    </div>
+  </div>
+
   <script src="./scripts/scripts.js"></script>
 </body>
 

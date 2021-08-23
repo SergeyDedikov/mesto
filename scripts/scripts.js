@@ -17,8 +17,8 @@ closeButton.addEventListener("click", popupClosed);
 /* Edit profile + Submit form*/
 
 let formElement = document.querySelector(".popup__container");
-let nameInput = formElement.querySelector(".popup__item_name");
-let jobInput = formElement.querySelector(".popup__item_job");
+let nameInput = formElement.querySelector(".popup__item_value_name");
+let jobInput = formElement.querySelector(".popup__item_value_job");
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
