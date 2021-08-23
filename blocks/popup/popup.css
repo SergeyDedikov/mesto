@@ -1,8 +1,7 @@
 .popup {
   width: 100vw;
   height: 100vh;
-  display: flex;
-  visibility: hidden;
+  display: none;
   z-index: 999;
   position: fixed;
   top: 0;
@@ -10,10 +9,4 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
-  transform: scale(0);
-  opacity: 0;
-  transition-property: opacity, transform, visibility;
-  transition-duration: 0.3s, 0s, 0s;
-  transition-delay: 0s, 0.3s, 0.3s;
-  transition-timing-function: ease-out;
 }
