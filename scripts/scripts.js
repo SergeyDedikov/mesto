@@ -1,7 +1,7 @@
 /* Open-Close popup */
 
 let popup = document.querySelector(".popup");
-let editButton = document.querySelector(".profile__button_edit");
+let editButton = document.querySelector(".profile__button_type_edit");
 let closeButton = document.querySelector(".popup__button_close");
 
 function popupOpened() {
