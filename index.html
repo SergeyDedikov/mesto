@@ -15,101 +15,97 @@
     <img class="header__logo" src="./images/logo-mesto.svg" alt="Логотип Место.Россия" />
   </header>
 
-  <div class="page__container">
+  <main class="main">
 
-    <main>
+    <section class="profile" aria-label="Профиль пользователя">
+      <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар пользователя" />
+      <div class="profile__info">
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <button class="profile__button profile__button_type_edit" type="button"></button>
+        <p class="profile__job">Исследователь океана</p>
+      </div>
+      <button class="profile__button profile__button_type_add" type="button"></button>
+    </section>
 
-      <section class="profile" aria-label="Профиль пользователя">
-        <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар пользователя" />
-        <div class="profile__info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__button profile__button_type_edit" type="button"></button>
-          <p class="profile__job">Исследователь океана</p>
-        </div>
-        <button class="profile__button profile__button_type_add" type="button"></button>
-      </section>
+    <section class="cards" aria-label="Карточки мест">
+      <ul class="cards__list">
+        <li>
+          <figure class="card">
+            <img class="card__photo" src="./images/cards/card-baykal.jpg"
+              alt="Несколько людей своими телами выложили на льду слово Байкал" />
+            <figcaption class="card__info">
+              <h2 class="card__description">
+                Байкал
+              </h2>
+              <button class="card__like" type="button"></button>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <img class="card__photo" src="./images/cards/card-hohlovka.jpg" alt="Деревянный храм" />
+            <figcaption class="card__info">
+              <h2 class="card__description">
+                Хохловка, Пермский край
+              </h2>
+              <button class="card__like" type="button"></button>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <img class="card__photo" src="./images/cards/card-zhigalan.jpg" alt="Водопад в лесу" />
+            <figcaption class="card__info">
+              <h2 class="card__description">
+                Жигалинские водопады
+              </h2>
+              <button class="card__like" type="button"></button>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <img class="card__photo" src="./images/cards/card-altai.jpg" alt="Русло горной реки" />
+            <figcaption class="card__info">
+              <h2 class="card__description">
+                Алтай
+              </h2>
+              <button class="card__like" type="button"></button>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <img class="card__photo" src="./images/cards/card-rostov.jpg" alt="Православный храм" />
+            <figcaption class="card__info">
+              <h2 class="card__description">
+                Ростов
+              </h2>
+              <button class="card__like" type="button"></button>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="card">
+            <img class="card__photo" src="./images/cards/card-kamchatka.jpg" alt="Горный пик в облаках" />
+            <figcaption class="card__info">
+              <h2 class="card__description">
+                Камчатка
+              </h2>
+              <button class="card__like" type="button"></button>
+            </figcaption>
+          </figure>
+        </li>
+      </ul>
+    </section>
 
-      <section class="cards" aria-label="Карточки мест">
-        <ul class="cards__list">
-          <li>
-            <figure class="card">
-              <img class="card__photo" src="./images/cards/card-baykal.jpg"
-                alt="Несколько людей своими телами выложили на льду слово Байкал" />
-              <figcaption class="card__info">
-                <h2 class="card__description">
-                  Байкал
-                </h2>
-                <button class="card__like" type="button"></button>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure class="card">
-              <img class="card__photo" src="./images/cards/card-hohlovka.jpg" alt="Деревянный храм" />
-              <figcaption class="card__info">
-                <h2 class="card__description">
-                  Хохловка, Пермский край
-                </h2>
-                <button class="card__like" type="button"></button>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure class="card">
-              <img class="card__photo" src="./images/cards/card-zhigalan.jpg" alt="Водопад в лесу" />
-              <figcaption class="card__info">
-                <h2 class="card__description">
-                  Жигалинские водопады
-                </h2>
-                <button class="card__like" type="button"></button>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure class="card">
-              <img class="card__photo" src="./images/cards/card-altai.jpg" alt="Русло горной реки" />
-              <figcaption class="card__info">
-                <h2 class="card__description">
-                  Алтай
-                </h2>
-                <button class="card__like" type="button"></button>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure class="card">
-              <img class="card__photo" src="./images/cards/card-rostov.jpg" alt="Православный храм" />
-              <figcaption class="card__info">
-                <h2 class="card__description">
-                  Ростов
-                </h2>
-                <button class="card__like" type="button"></button>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure class="card">
-              <img class="card__photo" src="./images/cards/card-kamchatka.jpg" alt="Горный пик в облаках" />
-              <figcaption class="card__info">
-                <h2 class="card__description">
-                  Камчатка
-                </h2>
-                <button class="card__like" type="button"></button>
-              </figcaption>
-            </figure>
-          </li>
-        </ul>
-      </section>
+  </main>
 
-    </main>
-
-    <footer class="footer">
-      <p class="footer__copyright" lang="en">
-        &copy; 2021 Mesto Russia & Sergey Dedikov
-      </p>
-    </footer>
-
-  </div>
+  <footer class="footer">
+    <p class="footer__copyright" lang="en">
+      &copy; 2021 Mesto Russia & Sergey Dedikov
+    </p>
+  </footer>
 
   <div class="popup" aria-label="Редактировать профиль">
     <div class="popup__container">
