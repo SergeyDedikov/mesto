@@ -29,7 +29,7 @@
 
     <section class="cards" aria-label="Карточки мест">
       <ul class="cards__list">
-        <li>
+        <!-- <li>
           <figure class="card">
             <img class="card__photo" src="./images/cards/card-baykal.jpg"
               alt="Несколько людей своими телами выложили на льду слово Байкал" />
@@ -95,7 +95,7 @@
               <button class="card__like" type="button"></button>
             </figcaption>
           </figure>
-        </li>
+        </li> -->
       </ul>
     </section>
 
@@ -136,6 +136,19 @@
       </form>
     </div>
   </div>
+
+  <template id="card-template">
+    <li>
+      <figure class="card">
+        <img class="card__photo" src="" alt="" />
+        <figcaption class="card__info">
+          <h2 class="card__description"></h2>
+          <button class="card__like" type="button"></button>
+          <button class="card__button-remove" type="button"></button>
+        </figcaption>
+      </figure>
+    </li>
+  </template>
 
   <script src="./scripts/scripts.js"></script>
 </body>
