@@ -17,7 +17,9 @@ const jobProfile = document.querySelector(".profile__job");
 
 const popupAddPlace = document.querySelector(".popup_type_add-place");
 const buttonAddPlace = document.querySelector(".profile__button_type_add");
-const formAddPlace = document.querySelector(".popup__container_type_add-place");
+const formAddPlace = document.querySelector(".form__add-place");
+const nameAddPlace = document.querySelector(".popup__item_value_place");
+const linkAddPlace = document.querySelector(".popup__item_value_link");
 const buttonCloseAddPlace = document.querySelector(
   ".popup__button_type_close-add-place"
 );
@@ -50,22 +52,11 @@ function openPopupAddPlace() {
 function closePopupAddPlace() {
   popupAddPlace.classList.remove("popup_opened");
 }
-/*
-function submitAddPlace() {
-
-}
-*/
-/** Call Function */
-
-buttonEditProfile.addEventListener("click", openPopupEditProfile);
-buttonCloseEditProfile.addEventListener("click", closePopupEditProfile);
-formEditProfile.addEventListener("submit", submitFormProfile);
-
-buttonAddPlace.addEventListener("click", openPopupAddPlace);
-buttonCloseAddPlace.addEventListener("click", closePopupAddPlace);
-/*formEditProfile.addEventListener("submit", submitAddPlace);*/
 
 /** Cards */
+
+const cardsElement = document.querySelector(".cards__list");
+const cardTemplate = document.querySelector("#card-template").content;
 
 const initialCards = [
   {
@@ -94,14 +85,6 @@ const initialCards = [
   },
 ];
 
-const cardsElement = document.querySelector(".cards__list");
-const cardTemplate = document.querySelector("#card-template").content;
-
-const cardLike = (evt) =>
-  evt.target.closest(".card__like").classList.toggle("card__like_active");
-
-const removeCardHandler = (evt) => evt.target.closest("li").remove();
-
 const addCard = (card) => {
   const cardElement = cardTemplate.querySelector("li").cloneNode(true);
   cardElement.querySelector(".card__photo").src = card.link;
@@ -112,7 +95,34 @@ const addCard = (card) => {
     .querySelector(".card__button-remove")
     .addEventListener("click", removeCardHandler);
 
-  cardsElement.append(cardElement);
+  cardsElement.prepend(cardElement);
 };
 
+const addCardHandler = (evt) => {
+  evt.preventDefault();
+
+  addCard({
+    name: nameAddPlace.value,
+    link: linkAddPlace.value,
+  });
+
+  formAddPlace.reset();
+  closePopupAddPlace();
+};
+
+const cardLike = (evt) =>
+  evt.target.closest(".card__like").classList.toggle("card__like_active");
+
+const removeCardHandler = (evt) => evt.target.closest("li").remove();
+
+/** Call Function */
+
 initialCards.forEach((card) => addCard(card));
+
+buttonEditProfile.addEventListener("click", openPopupEditProfile);
+buttonCloseEditProfile.addEventListener("click", closePopupEditProfile);
+formEditProfile.addEventListener("submit", submitFormProfile);
+
+buttonAddPlace.addEventListener("click", openPopupAddPlace);
+buttonCloseAddPlace.addEventListener("click", closePopupAddPlace);
+formAddPlace.addEventListener("submit", addCardHandler);
