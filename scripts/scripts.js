@@ -94,28 +94,25 @@ const initialCards = [
   },
 ];
 
-const cardsElement = document.querySelector('.cards__list');
-const cardTemplate = document.querySelector('#card-template').content;
+const cardsElement = document.querySelector(".cards__list");
+const cardTemplate = document.querySelector("#card-template").content;
 
-const cardLike = evt => {
-  evt.target.closest('.card__like').classList.toggle('card__like_active');
+const cardLike = (evt) =>
+  evt.target.closest(".card__like").classList.toggle("card__like_active");
+
+const removeCardHandler = (evt) => evt.target.closest("li").remove();
+
+const addCard = (card) => {
+  const cardElement = cardTemplate.querySelector("li").cloneNode(true);
+  cardElement.querySelector(".card__photo").src = card.link;
+  cardElement.querySelector(".card__photo").alt = "Изображение: " + card.name;
+  cardElement.querySelector(".card__description").textContent = card.name;
+  cardElement.querySelector(".card__like").addEventListener("click", cardLike);
+  cardElement
+    .querySelector(".card__button-remove")
+    .addEventListener("click", removeCardHandler);
+
+  cardsElement.append(cardElement);
 };
 
-const removeCardHandler = evt => {
-  evt.target.closest('li').remove();
-};
-
-const addCard = card => {
-  const cardElement = cardTemplate.querySelector('li').cloneNode(true);
-  cardElement.querySelector('.card__photo').src = card.link;
-  cardElement.querySelector('.card__photo').alt = "Изображение: " + card.name;
-  cardElement.querySelector('.card__description').textContent = card.name;
-  cardElement.querySelector('.card__like').addEventListener('click', cardLike);
-  cardElement.querySelector('.card__button-remove').addEventListener('click', removeCardHandler);
-
-  cardsElement.prepend(cardElement);
-};
-
-initialCards.forEach(card => {
-  addCard(card);
-});
+initialCards.forEach((card) => addCard(card));
