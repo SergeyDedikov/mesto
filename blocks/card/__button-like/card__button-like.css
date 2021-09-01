@@ -1,7 +1,4 @@
-.card__like {
-  margin: 0;
-  padding: 0;
-  border: none;
+.card__button-like {
   position: relative;
   width: 22px;
   height: 19px;
@@ -9,7 +6,6 @@
   justify-self: right;
 }
 
-.card__like:hover {
+.card__button-like:hover {
   opacity: 0.5;
-  cursor: pointer;
 }

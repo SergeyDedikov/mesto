@@ -24,6 +24,15 @@ const buttonCloseAddPlace = document.querySelector(
   ".popup__button_type_close-add-place"
 );
 
+/** PopupCard Constant */
+
+const popupCard = document.querySelector(".popup_type_card");
+const buttonClosePopupCard = document.querySelector(
+  ".popup__button_type_close-card"
+);
+const cardImage = document.querySelector(".popup__card-image");
+const cardDescript = document.querySelector(".popup__card-description");
+
 /** Edit Profile Function */
 
 function openPopupEditProfile() {
@@ -51,6 +60,21 @@ function openPopupAddPlace() {
 
 function closePopupAddPlace() {
   popupAddPlace.classList.remove("popup_opened");
+}
+
+/** Popup Card */
+
+function openPopupCard() {
+  cardImage.src = document.querySelector(".card__photo").src;
+  cardImage.alt =
+    "Изображение: " + document.querySelector(".card__description").textContent;
+  cardDescript.textContent =
+    document.querySelector(".card__description").textContent;
+  popupCard.classList.add("popup_opened");
+}
+
+function closePopupCard() {
+  popupCard.classList.remove("popup_opened");
 }
 
 /** Cards */
@@ -90,7 +114,12 @@ const addCard = (card) => {
   cardElement.querySelector(".card__photo").src = card.link;
   cardElement.querySelector(".card__photo").alt = "Изображение: " + card.name;
   cardElement.querySelector(".card__description").textContent = card.name;
-  cardElement.querySelector(".card__like").addEventListener("click", cardLike);
+  cardElement
+    .querySelector(".card__button-image")
+    .addEventListener("click", openPopupCard);
+  cardElement
+    .querySelector(".card__button-like")
+    .addEventListener("click", cardLike);
   cardElement
     .querySelector(".card__button-remove")
     .addEventListener("click", removeCardHandler);
@@ -111,7 +140,9 @@ const addCardHandler = (evt) => {
 };
 
 const cardLike = (evt) =>
-  evt.target.closest(".card__like").classList.toggle("card__like_active");
+  evt.target
+    .closest(".card__button-like")
+    .classList.toggle("card__button-like_active");
 
 const removeCardHandler = (evt) => evt.target.closest("li").remove();
 
@@ -126,3 +157,5 @@ formEditProfile.addEventListener("submit", submitFormProfile);
 buttonAddPlace.addEventListener("click", openPopupAddPlace);
 buttonCloseAddPlace.addEventListener("click", closePopupAddPlace);
 formAddPlace.addEventListener("submit", addCardHandler);
+
+buttonClosePopupCard.addEventListener("click", closePopupCard);

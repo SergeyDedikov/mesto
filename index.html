@@ -37,7 +37,7 @@
               <h2 class="card__description">
                 Байкал
               </h2>
-              <button class="card__like" type="button"></button>
+              <button class="card__button-like" type="button"></button>
             </figcaption>
           </figure>
         </li>
@@ -48,7 +48,7 @@
               <h2 class="card__description">
                 Хохловка, Пермский край
               </h2>
-              <button class="card__like" type="button"></button>
+              <button class="card__button-like" type="button"></button>
             </figcaption>
           </figure>
         </li>
@@ -59,7 +59,7 @@
               <h2 class="card__description">
                 Жигалинские водопады
               </h2>
-              <button class="card__like" type="button"></button>
+              <button class="card__button-like" type="button"></button>
             </figcaption>
           </figure>
         </li>
@@ -70,7 +70,7 @@
               <h2 class="card__description">
                 Алтай
               </h2>
-              <button class="card__like" type="button"></button>
+              <button class="card__button-like" type="button"></button>
             </figcaption>
           </figure>
         </li>
@@ -81,7 +81,7 @@
               <h2 class="card__description">
                 Ростов
               </h2>
-              <button class="card__like" type="button"></button>
+              <button class="card__button-like" type="button"></button>
             </figcaption>
           </figure>
         </li>
@@ -92,7 +92,7 @@
               <h2 class="card__description">
                 Камчатка
               </h2>
-              <button class="card__like" type="button"></button>
+              <button class="card__button-like" type="button"></button>
             </figcaption>
           </figure>
         </li> -->
@@ -137,14 +137,25 @@
     </div>
   </div>
 
+  <div class="popup popup_type_card">
+    <figure class="popup__card">
+      <img class="popup__card-image" />
+      <figcaption class="popup__card-info">
+        <p class="popup__card-description"></p>
+      </figcaption>
+      <button class="popup__button popup__button_type_close popup__button_type_close-card" type="button"></button>
+  </div>
+
   <template id="card-template">
     <li>
       <figure class="card">
-        <img class="card__photo" src="" alt="" />
+        <button class="card__button-image button" type="button">
+          <img class="card__photo" src="" alt="" />
+        </button>
         <figcaption class="card__info">
           <h2 class="card__description"></h2>
-          <button class="card__like" type="button"></button>
-          <button class="card__button-remove" type="button"></button>
+          <button class="card__button-like button" type="button"></button>
+          <button class="card__button-remove button" type="button"></button>
         </figcaption>
       </figure>
     </li>
