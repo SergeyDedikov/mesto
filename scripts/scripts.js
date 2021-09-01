@@ -30,8 +30,6 @@ const popupCard = document.querySelector(".popup_type_card");
 const buttonClosePopupCard = document.querySelector(
   ".popup__button_type_close-card"
 );
-const cardImage = document.querySelector(".popup__card-image");
-const cardDescript = document.querySelector(".popup__card-description");
 
 /** Edit Profile Function */
 
@@ -64,13 +62,12 @@ function closePopupAddPlace() {
 
 /** Popup Card */
 
-function openPopupCard() {
-  cardImage.src = document.querySelector(".card__photo").src;
-  cardImage.alt =
-    "Изображение: " + document.querySelector(".card__description").textContent;
-  cardDescript.textContent =
-    document.querySelector(".card__description").textContent;
+function openPopupCard(evt) {
   popupCard.classList.add("popup_opened");
+  popupCard.querySelector(".popup__card-image").src = evt.target.src;
+  popupCard.querySelector(".popup__card-image").alt = evt.target.alt;
+  popupCard.querySelector(".popup__card-description").textContent =
+    evt.target.nextElementSibling.firstElementChild.textContent;
 }
 
 function closePopupCard() {
@@ -112,10 +109,10 @@ const initialCards = [
 const addCard = (card) => {
   const cardElement = cardTemplate.querySelector("li").cloneNode(true);
   cardElement.querySelector(".card__photo").src = card.link;
-  cardElement.querySelector(".card__photo").alt = "Изображение: " + card.name;
+  cardElement.querySelector(".card__photo").alt = "На фотографии: " + card.name;
   cardElement.querySelector(".card__description").textContent = card.name;
   cardElement
-    .querySelector(".card__button-image")
+    .querySelector(".card__photo")
     .addEventListener("click", openPopupCard);
   cardElement
     .querySelector(".card__button-like")
