@@ -9,8 +9,3 @@
   right: 15px;
   background: url(../../../images/icon-button-delete.svg) no-repeat center;
 }
-
-.card__button-remove:hover {
-  opacity: 0.6;
-  cursor: pointer;
-}

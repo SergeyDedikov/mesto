@@ -1,15 +1,4 @@
 .profile__button {
-  margin: 0;
-  padding: 0;
   border: solid #fff;
-  box-sizing: border-box;
   background: center no-repeat #000;
-  opacity: 1;
-  transition: opacity 0.2s ease-out;
-}
-
-.profile__button:hover {
-  opacity: 0.6;
-  cursor: pointer;
-  transition: opacity 0.2s ease-in;
 }
