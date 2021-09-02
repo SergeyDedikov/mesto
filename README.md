@@ -1,4 +1,4 @@
-# Практическая работа №4: Место
+# Практическая работа №5: Место
 
 * Описание
 * Особенности
@@ -8,39 +8,58 @@ ______________
 
 **Описание**
 
-Проект Место — 4-я практическая работа курса "Веб-разработчик" Яндекс.Практикума, в которой студенты впервые применили язык программирования **JavaScript**.
+Практическая работа №5 курса "Веб-разработчик" Яндекс.Практикума — продолжение разработки проекта **"Место"**, в котором продолжается изучение языка программирования **JavaScript**.
 
-В Фигме был представлен макет с вариантами для экрана монитора и мобильного устройства: 1280 и 320px, соответственно.
-
-**Цель — научиться разрабатывать и применять JavaScript**
 ______________
 
 **Особенности**
 
-JavaScript должен быть привязан к кнопке редактирования профиля. При этом появляется всплывающее окно формы, в которой редактируемые поля также должны изменять содержимое основной страницы в блоке профиля посредством JavaScript, для чего в коде прописывается обработчик формы с отключённой по умолчанию отправкой данных и замена текста новым значением:
+В этой работе появляется возможность добавления пользователем на страницу новых карточек мест с изображением и описанием посредством JavaScript по готовому шаблону в разметке.
 
-```javascript
-function formSubmitHandler(evt) {
-  evt.preventDefault();
-.
-.
-.
-nameProfile.textContent = nameInput.value;
-.
-.
-.
-}
-formElement.addEventListener('submit', formSubmitHandler);
+```html
+<template id="card-template">
+    <li>
+     ...
+    </li>
+  </template>
 ```
 
-Закрытие формы тоже реализовано через JavaScript(удаляется класс видимости блока):
+Происходит клонирование шаблона разметки и вставка с новым содержимым.
 
 ```javascript
-function popupClosed() {
-  popup.classList.remove("popup_opened");
-}
-closeButton.addEventListener("click", popupClosed);
+const addCard = (card) => {
+  const cardElement = cardTemplate.querySelector("li").cloneNode(true);
+  cardElement.querySelector(".card__photo").src = card.link;
+  cardElement.querySelector(".card__photo").alt = "На фотографии: " + card.name;
+  cardElement.querySelector(".card__description").textContent = card.name;
+  ...
 ```
+Также происходит инициализация нескольких карточек из готового массива данных.
+
+```javascript
+const initialCards = [
+  {
+    name: "Архыз",
+    link: "https:...jpg",
+  },
+  {
+    name: "Челябинская область",
+    link: "https:...jpg",
+  },
+  ...
+```
+
+Добавлены функции удаления карточек и отметки "Нравится".
+
+```javascript
+const cardLike = (evt) =>
+  evt.target
+    .closest(".card__button-like")
+    .classList.toggle("card__button-like_active");
+
+const removeCardHandler = (evt) => evt.target.closest("li").remove();
+```
+
 ____
 
 **Ссылка на работу**
