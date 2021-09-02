@@ -6,7 +6,7 @@ const formEditProfile = document.querySelector(
   ".popup__container_type_edit-profile"
 );
 const buttonCloseEditProfile = document.querySelector(
-  ".popup__button_type_close-edit-profile"
+  ".popup__close_edit-profile"
 );
 const nameInput = formEditProfile.querySelector(".popup__item_value_name");
 const jobInput = formEditProfile.querySelector(".popup__item_value_job");
@@ -17,18 +17,18 @@ const jobProfile = document.querySelector(".profile__job");
 
 const popupAddPlace = document.querySelector(".popup_type_add-place");
 const buttonAddPlace = document.querySelector(".profile__button_type_add");
-const formAddPlace = document.querySelector(".form__add-place");
+const formAddPlace = document.querySelector(".popup__form-add-place");
 const nameAddPlace = document.querySelector(".popup__item_value_place");
 const linkAddPlace = document.querySelector(".popup__item_value_link");
 const buttonCloseAddPlace = document.querySelector(
-  ".popup__button_type_close-add-place"
+  ".popup__close_add-place"
 );
 
 /** PopupCard Constants */
 
 const popupCard = document.querySelector(".popup_type_card");
 const buttonClosePopupCard = document.querySelector(
-  ".popup__button_type_close-card"
+  ".popup__close_card"
 );
 
 /** Cards Constants*/
