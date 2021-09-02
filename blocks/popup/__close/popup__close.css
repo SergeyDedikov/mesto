@@ -5,7 +5,7 @@
   top: -40px;
   right: -40px;
   background: center / contain no-repeat
-    url(../../../../images/icon-close-form.svg);
+    url(../../../images/icon-close-form.svg);
 }
 
 @media screen and (max-width: 600px) {
