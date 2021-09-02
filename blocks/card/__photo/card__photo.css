@@ -5,6 +5,6 @@
   object-position: center;
 }
 
-.card__photo {
+.card__photo:hover {
   cursor: pointer;
 }
