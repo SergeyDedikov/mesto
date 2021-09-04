@@ -92,7 +92,7 @@ const creatCard = (data) => {
       "На фотографии: " + data.name;
     popupCard.querySelector(".popup__card-description").textContent = data.name;
   });
-  card.querySelector(".card__button-like").addEventListener("click", cardLike);
+  card.querySelector(".card__button-like").addEventListener("click", likeCard);
   card
     .querySelector(".card__button-remove")
     .addEventListener("click", removeCardHandler);
@@ -112,10 +112,8 @@ const addCardHandler = (evt) => {
   closePopup(popupAddPlace);
 };
 
-const cardLike = (evt) =>
-  evt.target
-    .closest(".card__button-like")
-    .classList.toggle("card__button-like_active");
+const likeCard = (evt) =>
+  evt.target.classList.toggle("card__button-like_active");
 
 const removeCardHandler = (evt) => evt.target.closest("li").remove();
 
