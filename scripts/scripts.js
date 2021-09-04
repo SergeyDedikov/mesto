@@ -78,16 +78,6 @@ function submitFormProfile(evt) {
   closePopupEditProfile();
 }
 
-/** Add Place Functions */
-
-function openPopupAddPlace() {
-  popupAddPlace.classList.add("popup_opened");
-}
-
-function closePopupAddPlace() {
-  popupAddPlace.classList.remove("popup_opened");
-}
-
 /** Popup Card Functions */
 
 function openPopupCard(evt) {
@@ -151,8 +141,8 @@ buttonEditProfile.addEventListener("click", () => {
 buttonCloseEditProfile.addEventListener("click", () => closePopup(popupEditProfile));
 formEditProfile.addEventListener("submit", submitFormProfile);
 
-buttonAddPlace.addEventListener("click", openPopupAddPlace);
-buttonCloseAddPlace.addEventListener("click", closePopupAddPlace);
+buttonAddPlace.addEventListener("click", () => openPopup(popupAddPlace));
+buttonCloseAddPlace.addEventListener("click", () => closePopup(popupAddPlace));
 formAddPlace.addEventListener("submit", addCardHandler);
 
 buttonClosePopupCard.addEventListener("click", closePopupCard);
