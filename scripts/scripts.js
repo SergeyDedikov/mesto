@@ -80,32 +80,32 @@ function submitFormProfile(evt) {
 
 /** Popup Card Functions */
 
-const addCard = (card) => {
-  const cardElement = cardTemplate.querySelector("li").cloneNode(true);
-  cardElement.querySelector(".card__photo").src = card.link;
-  cardElement.querySelector(".card__photo").alt = "На фотографии: " + card.name;
-  cardElement.querySelector(".card__description").textContent = card.name;
-  cardElement.querySelector(".card__photo").addEventListener("click", (evt) => {
+const creatCard = (data) => {
+  const card = cardTemplate.querySelector("li").cloneNode(true);
+  card.querySelector(".card__photo").src = data.link;
+  card.querySelector(".card__photo").alt = "На фотографии: " + data.name;
+  card.querySelector(".card__description").textContent = data.name;
+  card.querySelector(".card__photo").addEventListener("click", (evt) => {
     openPopup(popupCard);
     popupCard.querySelector(".popup__card-image").src = evt.target.src;
     popupCard.querySelector(".popup__card-image").alt = evt.target.alt;
     popupCard.querySelector(".popup__card-description").textContent =
       evt.target.nextElementSibling.firstElementChild.textContent;
   });
-  cardElement
+  card
     .querySelector(".card__button-like")
     .addEventListener("click", cardLike);
-  cardElement
+  card
     .querySelector(".card__button-remove")
     .addEventListener("click", removeCardHandler);
 
-  cardsContainer.prepend(cardElement);
+  cardsContainer.prepend(card);
 };
 
 const addCardHandler = (evt) => {
   evt.preventDefault();
 
-  addCard({
+  creatCard({
     name: nameAddPlace.value,
     link: linkAddPlace.value,
   });
@@ -123,7 +123,7 @@ const removeCardHandler = (evt) => evt.target.closest("li").remove();
 
 /** Call Functions */
 
-initialCards.forEach((card) => addCard(card));
+initialCards.forEach((data) => creatCard(data));
 
 buttonEditProfile.addEventListener("click", () => {
   openPopup(popupEditProfile);
