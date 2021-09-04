@@ -85,12 +85,11 @@ const creatCard = (data) => {
   card.querySelector(".card__photo").src = data.link;
   card.querySelector(".card__photo").alt = "На фотографии: " + data.name;
   card.querySelector(".card__description").textContent = data.name;
-  card.querySelector(".card__photo").addEventListener("click", (evt) => {
+  card.querySelector(".card__photo").addEventListener("click", () => {
     openPopup(popupCard);
-    popupCard.querySelector(".popup__card-image").src = evt.target.src;
-    popupCard.querySelector(".popup__card-image").alt = evt.target.alt;
-    popupCard.querySelector(".popup__card-description").textContent =
-      evt.target.nextElementSibling.firstElementChild.textContent;
+    popupCard.querySelector(".popup__card-image").src = data.link;
+    popupCard.querySelector(".popup__card-image").alt = "На фотографии: " + data.name;
+    popupCard.querySelector(".popup__card-description").textContent = data.name;
   });
   card
     .querySelector(".card__button-like")
