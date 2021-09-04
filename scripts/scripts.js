@@ -33,7 +33,7 @@ const buttonClosePopupCard = document.querySelector(
 
 /** Cards Constants*/
 
-const cardsElement = document.querySelector(".cards__list");
+const cardsContainer = document.querySelector(".cards__list");
 const cardTemplate = document.querySelector("#card-template").content;
 
 const initialCards = [
@@ -121,7 +121,7 @@ const addCard = (card) => {
     .querySelector(".card__button-remove")
     .addEventListener("click", removeCardHandler);
 
-  cardsElement.prepend(cardElement);
+  cardsContainer.prepend(cardElement);
 };
 
 const addCardHandler = (evt) => {
