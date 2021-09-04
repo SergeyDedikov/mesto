@@ -20,16 +20,12 @@ const buttonAddPlace = document.querySelector(".profile__button_type_add");
 const formAddPlace = document.querySelector(".popup__form-add-place");
 const nameAddPlace = document.querySelector(".popup__item_value_place");
 const linkAddPlace = document.querySelector(".popup__item_value_link");
-const buttonCloseAddPlace = document.querySelector(
-  ".popup__close_add-place"
-);
+const buttonCloseAddPlace = document.querySelector(".popup__close_add-place");
 
 /** PopupCard Constants */
 
 const popupCard = document.querySelector(".popup_type_card");
-const buttonClosePopupCard = document.querySelector(
-  ".popup__close_card"
-);
+const buttonClosePopupCard = document.querySelector(".popup__close_card");
 
 /** Cards Constants*/
 
@@ -63,17 +59,17 @@ const initialCards = [
   },
 ];
 
-/** Edit Profile Functions */
+/** Popup Functions */
 
-function openPopupEditProfile() {
-  popupEditProfile.classList.add("popup_opened");
-  nameInput.value = nameProfile.textContent;
-  jobInput.value = jobProfile.textContent;
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
 }
 
-function closePopupEditProfile() {
-  popupEditProfile.classList.remove("popup_opened");
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
 }
+
+/** Edit Profile Submit */
 
 function submitFormProfile(evt) {
   evt.preventDefault();
@@ -147,8 +143,12 @@ const removeCardHandler = (evt) => evt.target.closest("li").remove();
 
 initialCards.forEach((card) => addCard(card));
 
-buttonEditProfile.addEventListener("click", openPopupEditProfile);
-buttonCloseEditProfile.addEventListener("click", closePopupEditProfile);
+buttonEditProfile.addEventListener("click", () => {
+  openPopup(popupEditProfile);
+  nameInput.value = nameProfile.textContent;
+  jobInput.value = jobProfile.textContent;
+});
+buttonCloseEditProfile.addEventListener("click", () => closePopup(popupEditProfile));
 formEditProfile.addEventListener("submit", submitFormProfile);
 
 buttonAddPlace.addEventListener("click", openPopupAddPlace);
