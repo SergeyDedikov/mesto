@@ -75,7 +75,7 @@ function submitFormProfile(evt) {
   evt.preventDefault();
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
-  closePopupEditProfile();
+  closePopup(popupEditProfile);
 }
 
 /** Popup Card Functions */
