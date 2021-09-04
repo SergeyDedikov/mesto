@@ -97,16 +97,20 @@ const creatCard = (data) => {
     .querySelector(".card__button-remove")
     .addEventListener("click", removeCardHandler);
 
-  cardsContainer.prepend(card);
+  return card;
 };
+
+function renderCard(card) {
+  cardsContainer.prepend(card);
+}
 
 const addCardHandler = (evt) => {
   evt.preventDefault();
 
-  creatCard({
+  renderCard(creatCard({
     name: nameAddPlace.value,
     link: linkAddPlace.value,
-  });
+  }));
 
   formAddPlace.reset();
   closePopup(popupAddPlace);
@@ -119,7 +123,7 @@ const removeCardHandler = (evt) => evt.target.closest("li").remove();
 
 /** Call Functions */
 
-initialCards.forEach((data) => creatCard(data));
+initialCards.forEach((data) => renderCard(creatCard(data)));
 
 buttonEditProfile.addEventListener("click", () => {
   openPopup(popupEditProfile);
