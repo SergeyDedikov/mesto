@@ -111,7 +111,7 @@ const addCardHandler = (evt) => {
   });
 
   formAddPlace.reset();
-  closePopupAddPlace();
+  closePopup(popupAddPlace);
 };
 
 const cardLike = (evt) =>
