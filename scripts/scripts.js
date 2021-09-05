@@ -107,10 +107,12 @@ function renderCard(card) {
 const addCardHandler = (evt) => {
   evt.preventDefault();
 
-  renderCard(creatCard({
+  const card = creatCard({
     name: nameAddPlace.value,
     link: linkAddPlace.value,
-  }));
+  });
+
+  renderCard(card);
 
   formAddPlace.reset();
   closePopup(popupAddPlace);
