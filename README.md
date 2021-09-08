@@ -25,15 +25,15 @@
 Происходит клонирование шаблона разметки и вставка с новым содержимым.
 
 ```javascript
-const creatCard = (data) => {
+const createCard = (data) => {
   const card = cardTemplate.querySelector("li").cloneNode(true);
   card.querySelector(".card__photo").src = data.link;
   card.querySelector(".card__photo").alt = "На фотографии: " + data.name;
   card.querySelector(".card__description").textContent = data.name;
   ...
-  function renderCard(card) {
-  cardsContainer.prepend(card);
 }
+const renderCard = (data) => {
+  cardsContainer.prepend(createCard(data));
 ```
 
 Также происходит инициализация нескольких карточек из готового массива данных.
