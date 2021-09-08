@@ -100,19 +100,17 @@ const creatCard = (data) => {
   return card;
 };
 
-function renderCard(card) {
-  cardsContainer.prepend(card);
+const renderCard = (data) => {
+  cardsContainer.prepend(creatCard(data));
 }
 
 const addCardHandler = (evt) => {
   evt.preventDefault();
 
-  const card = creatCard({
+  renderCard({
     name: nameAddPlace.value,
     link: linkAddPlace.value,
   });
-
-  renderCard(card);
 
   formAddPlace.reset();
   closePopup(popupAddPlace);
@@ -125,7 +123,7 @@ const removeCardHandler = (evt) => evt.target.closest("li").remove();
 
 /** Call Functions */
 
-initialCards.forEach((data) => renderCard(creatCard(data)));
+initialCards.forEach((data) => renderCard(data));
 
 buttonEditProfile.addEventListener("click", () => {
   openPopup(popupEditProfile);
