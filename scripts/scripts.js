@@ -80,7 +80,7 @@ function submitFormProfile(evt) {
 
 /** Popup Card Functions */
 
-const creatCard = (data) => {
+const createCard = (data) => {
   const card = cardTemplate.querySelector("li").cloneNode(true);
   card.querySelector(".card__photo").src = data.link;
   card.querySelector(".card__photo").alt = "На фотографии: " + data.name;
@@ -101,7 +101,7 @@ const creatCard = (data) => {
 };
 
 const renderCard = (data) => {
-  cardsContainer.prepend(creatCard(data));
+  cardsContainer.prepend(createCard(data));
 }
 
 const addCardHandler = (evt) => {
