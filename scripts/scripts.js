@@ -17,7 +17,7 @@ const jobProfile = document.querySelector(".profile__job");
 
 const popupAddPlace = document.querySelector(".popup_type_add-place");
 const buttonAddPlace = document.querySelector(".profile__button_type_add");
-const formAddPlace = document.querySelector(".popup__form-add-place");
+const formAddPlace = document.querySelector(".popup__form_add-place");
 const nameAddPlace = document.querySelector(".popup__item_value_place");
 const linkAddPlace = document.querySelector(".popup__item_value_link");
 const buttonCloseAddPlace = document.querySelector(".popup__close_add-place");
