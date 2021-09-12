@@ -72,7 +72,7 @@ function closePopup(popup) {
 /** Edit Profile Submit */
 
 function submitFormProfile(evt) {
-  evt.preventDefault();
+  // evt.preventDefault();
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
   closePopup(popupEditProfile);
@@ -105,7 +105,7 @@ const renderCard = (data) => {
 }
 
 const addCardHandler = (evt) => {
-  evt.preventDefault();
+  // evt.preventDefault();
 
   renderCard({
     name: nameAddPlace.value,
