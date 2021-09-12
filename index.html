@@ -47,10 +47,10 @@
         <fieldset class="popup__input-container">
           <input id="name" class="popup__item popup__item_value_name" type="text" name="name" value="Жак-Ив Кусто"
             required minlength="2" maxlength="40">
-          <span></span>
+          <span id="name-error" class="error"></span>
           <input id="job" class="popup__item popup__item_value_job" type="text" name="job" value="Исследователь океана"
             required minlength="2" maxlength="200">
-          <span></span>
+          <span id="job-error" class="error"></span>
         </fieldset>
         <button class="popup__submit button" type="submit">Сохранить</button>
         <button class="popup__close popup__close_edit-profile button" type="button"></button>
@@ -65,10 +65,10 @@
         <fieldset class="popup__input-container">
           <input id="place" class="popup__item popup__item_value_place" type="text" name="place" placeholder="Название"
             required minlength="2" maxlength="30">
-          <span></span>
+          <span id="place-error" class="error"></span>
           <input id="link" class="popup__item popup__item_value_link" type="url" name="link"
             placeholder="Ссылка на картинку" required>
-          <span></span>
+          <span id="link-error" class="error"></span>
         </fieldset>
         <button class="popup__submit button" type="submit">Создать</button>
         <button class="popup__close popup__close_add-place button" type="button"></button>
