@@ -61,12 +61,20 @@ const initialCards = [
 
 /** Popup Functions */
 
+const closeOnClick = (evt) => {
+  if (evt.target.classList.contains('popup')) {
+    evt.target.classList.toggle("popup_opened");
+  }
+}
+
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  popup.addEventListener('click', closeOnClick);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  popup.removeEventListener('click', closeOnClick);
 }
 
 /** Edit Profile Submit */
