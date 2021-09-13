@@ -114,7 +114,7 @@ const setEventListeners = (
     submitButtonSelector,
     inactiveButtonClass
   );
-  
+
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       checkInputValidity(
@@ -134,7 +134,7 @@ const setEventListeners = (
 };
 
 function enableValidation(config) {
-  const formList = document.querySelectorAll("config.formSelector");
+  const formList = document.querySelectorAll(config.formSelector);
   formList.forEach((formElement) => {
     setEventListeners(
       formElement,
