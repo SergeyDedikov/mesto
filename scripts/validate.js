@@ -102,11 +102,9 @@ const setEventListeners = (
   errorClass,
   inactiveButtonClass
 ) => {
-  /* formElement.addEventListener("submit", (evt) => {
+  formElement.addEventListener("submit", (evt) => {
     evt.prevetDefault();
-  }); */
-
-  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+  });
 
   toggleButtonState(
     formElement,
@@ -114,6 +112,8 @@ const setEventListeners = (
     submitButtonSelector,
     inactiveButtonClass
   );
+  
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
