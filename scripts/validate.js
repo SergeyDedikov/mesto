@@ -9,6 +9,7 @@ const validationConfig = {
 console.log(validationConfig);
 
 const showInputError = (
+  formElement,
   inputElement,
   errorElement,
   inputErrorClass,
@@ -20,6 +21,7 @@ const showInputError = (
 };
 
 const hideInputError = (
+  formElement,
   inputElement,
   errorElement,
   inputErrorClass,
@@ -37,10 +39,23 @@ const checkInputValidity = (
   errorClass
 ) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+
   if (!inputElement.validity.valid) {
-    showInputError(inputElement, errorElement, inputErrorClass, errorClass);
+    showInputError(
+      formElement,
+      inputElement,
+      errorElement,
+      inputErrorClass,
+      errorClass
+    );
   } else {
-    hideInputError(inputElement, errorElement, inputErrorClass, errorClass);
+    hideInputError(
+      formElement,
+      inputElement,
+      errorElement,
+      inputErrorClass,
+      errorClass
+    );
   }
 };
 
@@ -91,13 +106,15 @@ const setEventListeners = (
     evt.prevetDefault();
   }); */
 
-  const inputList = Array.for(formElement.querySelectorAll(inputSelector));
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+
   toggleButtonState(
     formElement,
     inputList,
     submitButtonSelector,
     inactiveButtonClass
   );
+  
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       checkInputValidity(
