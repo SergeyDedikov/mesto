@@ -61,20 +61,28 @@ const initialCards = [
 
 /** Popup Functions */
 
-const closeOnClick = (evt) => {
-  if (evt.target.classList.contains('popup')) {
-    evt.target.classList.toggle("popup_opened");
+function closeOnClick(evt) {
+  if (evt.target.classList.contains("popup")) {
+    evt.target.classList.remove("popup_opened");
   }
-}
+};
+
+function closeOnEsc(evt) {
+  if (evt.key === "Escape") {
+    popup.classList.remove("popup_opened");
+  }
+};
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  popup.addEventListener('click', closeOnClick);
+  popup.addEventListener("click", closeOnClick);
+  popup.addEventListener("keypress", closeOnEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  popup.removeEventListener('click', closeOnClick);
+  popup.removeEventListener("click", closeOnClick);
+  popup.removeEventListener("keypress", closeOnEsc);
 }
 
 /** Edit Profile Submit */
@@ -110,7 +118,7 @@ const createCard = (data) => {
 
 const renderCard = (data) => {
   cardsContainer.prepend(createCard(data));
-}
+};
 
 const addCardHandler = (evt) => {
   evt.preventDefault();
