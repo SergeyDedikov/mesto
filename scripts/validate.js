@@ -6,7 +6,6 @@ const validationConfig = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
 };
-console.log(validationConfig);
 
 const showInputError = (
   formElement,
@@ -106,14 +105,14 @@ const setEventListeners = (
     evt.prevetDefault();
   });
 
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+
   toggleButtonState(
     formElement,
     inputList,
     submitButtonSelector,
     inactiveButtonClass
   );
-  
-  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
@@ -148,4 +147,3 @@ function enableValidation(config) {
 }
 
 enableValidation(validationConfig);
-console.log(enableValidation(validationConfig));
