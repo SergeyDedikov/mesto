@@ -8,7 +8,6 @@ const validationConfig = {
 };
 
 const showInputError = (
-  formElement,
   inputElement,
   errorElement,
   inputErrorClass,
@@ -20,7 +19,6 @@ const showInputError = (
 };
 
 const hideInputError = (
-  formElement,
   inputElement,
   errorElement,
   inputErrorClass,
@@ -40,21 +38,9 @@ const checkInputValidity = (
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
 
   if (!inputElement.validity.valid) {
-    showInputError(
-      formElement,
-      inputElement,
-      errorElement,
-      inputErrorClass,
-      errorClass
-    );
+    showInputError(inputElement, errorElement, inputErrorClass, errorClass);
   } else {
-    hideInputError(
-      formElement,
-      inputElement,
-      errorElement,
-      inputErrorClass,
-      errorClass
-    );
+    hideInputError(inputElement, errorElement, inputErrorClass, errorClass);
   }
 };
 
@@ -78,20 +64,21 @@ const enableButtonSubmit = (buttonElement, inactiveButtonClass) => {
   buttonElement.classList.remove(inactiveButtonClass);
 };
 
-const toggleButtonState = (
+function toggleButtonState(
   formElement,
   inputList,
   submitButtonSelector,
   inactiveButtonClass
-) => {
+) {
   const buttonElement = formElement.querySelector(submitButtonSelector);
 
   if (hasInvalidInput(inputList) || hasEmptyInput(inputList)) {
+    /** добавить проверку наличия change в инпуте */
     disableButtonSubmit(buttonElement, inactiveButtonClass);
   } else {
     enableButtonSubmit(buttonElement, inactiveButtonClass);
   }
-};
+}
 
 const setEventListeners = (
   formElement,
