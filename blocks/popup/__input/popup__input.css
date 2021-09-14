@@ -1,7 +1,7 @@
-.popup__item {
+.popup__input {
   border: 0;
   padding: 0 0 8px;
-  margin: 0 0 30px;
+  margin: 0;
   width: 100%;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -14,10 +14,6 @@
   outline-style: none;
 }
 
-.popup__item:last-of-type {
-  margin-bottom: 0;
-}
-
-.popup__item::placeholder {
+.popup__input::placeholder {
   color: #c4c4c4;
 }
