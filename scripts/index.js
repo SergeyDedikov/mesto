@@ -63,13 +63,14 @@ const initialCards = [
 
 function closeOnClick(evt) {
   if (evt.target.classList.contains("popup")) {
-    evt.target.classList.remove("popup_opened");
+    closePopup(evt.target);
   }
 };
 
 function closeOnEsc(evt) {
   if (evt.key === "Escape") {
-    popup.classList.remove("popup_opened");
+    closePopup();
+    // popup.classList.remove("popup_opened");
   }
 };
 
@@ -83,6 +84,7 @@ function closePopup(popup) {
   popup.classList.remove("popup_opened");
   popup.removeEventListener("click", closeOnClick);
   popup.removeEventListener("keypress", closeOnEsc);
+  hideInputError();
 }
 
 /** Edit Profile Submit */

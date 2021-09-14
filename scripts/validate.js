@@ -24,9 +24,9 @@ const hideInputError = (
   inputErrorClass,
   errorClass
 ) => {
-  inputElement.classList.remove(inputErrorClass);
   errorElement.classList.remove(errorClass);
   errorElement.textContent = "";
+  inputElement.classList.remove(inputErrorClass);
 };
 
 const checkInputValidity = (
@@ -55,11 +55,15 @@ const hasEmptyInput = (inputList) => {
     return inputElement.value.lenght === 0;
   });
 };
-/*
-const isValid = (inputList) => {
-  if (hasInvalidInput(inputList) || hasEmptyInput(inputList))
+
+const isFormNotValid = (inputList) => {
+  if (hasInvalidInput(inputList) || hasEmptyInput(inputList)) {
+    return true;
+  } else {
+    return false;
+  }
 };
- */
+
 const disableButtonSubmit = (buttonElement, inactiveButtonClass) => {
   buttonElement.setAttribute('disabled', true);
   buttonElement.classList.add(inactiveButtonClass);
@@ -78,8 +82,7 @@ function toggleButtonState(
 ) {
   const buttonElement = formElement.querySelector(submitButtonSelector);
 
-  if (hasInvalidInput(inputList) || hasEmptyInput(inputList)) {
-    /** добавить проверку наличия change в инпуте */
+  if (isFormNotValid(inputList)) {
     disableButtonSubmit(buttonElement, inactiveButtonClass);
   } else {
     enableButtonSubmit(buttonElement, inactiveButtonClass);
@@ -94,9 +97,15 @@ const setEventListeners = (
   errorClass,
   inactiveButtonClass
 ) => {
+  formElement.addEventListener("submit", (evt) => {
+    evt.preventDefault();
+    formElement.reset();
+    // disableButtonSubmit(buttonElement, inactiveButtonClass);
+  });
+
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
 
-  toggleButtonState(/** false ? */
+  toggleButtonState(
     formElement,
     inputList,
     submitButtonSelector,
