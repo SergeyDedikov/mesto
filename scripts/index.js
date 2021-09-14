@@ -65,26 +65,24 @@ function closeOnClick(evt) {
   if (evt.target.classList.contains("popup")) {
     closePopup(evt.target);
   }
-};
+}
 
 function closeOnEsc(evt) {
   if (evt.key === "Escape") {
-    closePopup();
-    // popup.classList.remove("popup_opened");
+    closePopup(document.querySelector(".popup_opened"));
+    document.removeEventListener("keydown", closeOnEsc);
   }
-};
+}
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
   popup.addEventListener("click", closeOnClick);
-  popup.addEventListener("keypress", closeOnEsc);
+  document.addEventListener("keydown", closeOnEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
   popup.removeEventListener("click", closeOnClick);
-  popup.removeEventListener("keypress", closeOnEsc);
-  hideInputError();
 }
 
 /** Edit Profile Submit */

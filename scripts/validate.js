@@ -97,12 +97,7 @@ const setEventListeners = (
   errorClass,
   inactiveButtonClass
 ) => {
-  formElement.addEventListener("submit", (evt) => {
-    evt.preventDefault();
-    formElement.reset();
-    // disableButtonSubmit(buttonElement, inactiveButtonClass);
-  });
-
+  
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
 
   toggleButtonState(
