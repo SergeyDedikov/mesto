@@ -55,12 +55,18 @@ const hasEmptyInput = (inputList) => {
     return inputElement.value.lenght === 0;
   });
 };
-
+/*
+const isValid = (inputList) => {
+  if (hasInvalidInput(inputList) || hasEmptyInput(inputList))
+};
+ */
 const disableButtonSubmit = (buttonElement, inactiveButtonClass) => {
+  buttonElement.setAttribute('disabled', true);
   buttonElement.classList.add(inactiveButtonClass);
 };
 
 const enableButtonSubmit = (buttonElement, inactiveButtonClass) => {
+  buttonElement.removeAttribute('disabled');
   buttonElement.classList.remove(inactiveButtonClass);
 };
 
@@ -90,7 +96,7 @@ const setEventListeners = (
 ) => {
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
 
-  toggleButtonState(
+  toggleButtonState(/** false ? */
     formElement,
     inputList,
     submitButtonSelector,
