@@ -1,4 +1,4 @@
-# Практическая работа №5: Место
+# Практическая работа №6: Место
 
 - Описание
 - Особенности
@@ -8,56 +8,57 @@
 
 **Описание**
 
-Практическая работа №5 курса "Веб-разработчик" Яндекс.Практикума — продолжение разработки проекта **"Место"**, в котором продолжается изучение языка программирования **JavaScript**.
+Практическая работа №6 курса "Веб-разработчик" Яндекс.Практикума — продолжение разработки проекта **"Место"**, в котором продолжается изучение языка программирования **JavaScript**.
 
 ---
 
 **Особенности**
 
-В этой работе появляется возможность добавления пользователем на страницу новых карточек мест с изображением и описанием посредством JavaScript по готовому шаблону в разметке.
+В этой работе перед студентами поставлена задача: реализовать валидацию — проверку корректности — введённых пользователем данных.
 
-```html
-<template id="card-template">
-  <li>...</li>
-</template>
-```
-
-Происходит клонирование шаблона разметки и вставка с новым содержимым.
+Валидация проверяет все поля ввода в каждой форме посредством установки обработчиков событий:
 
 ```javascript
-const createCard = (data) => {
-  const card = cardTemplate.querySelector("li").cloneNode(true);
-  card.querySelector(".card__photo").src = data.link;
-  card.querySelector(".card__photo").alt = "На фотографии: " + data.name;
-  card.querySelector(".card__description").textContent = data.name;
-  ...
+inputList.forEach((inputElement) => {
+    inputElement.addEventListener("input", () => {
+      checkInputValidity(
+        formElement,
+        inputElement,
+        ...
+```
+
+Следит за состоянием кнопки отправки формы и переключает её доступность:
+
+```javascript
+toggleButtonState(
+        formElement,
+        inputList,
+        ...
+if (isFormNotValid(inputList)) {
+    disableButtonSubmit(buttonElement, inactiveButtonClass);
+  } else {
+    enableButtonSubmit(buttonElement, inactiveButtonClass);
+  }
+```
+
+Также происходит оттображение/скрытие ошибок при несоответствии введённых данных предназначенным для них полям:
+
+```javascript
+if (!inputElement.validity.valid) {
+    showInputError(inputElement, errorElement, inputErrorClass, errorClass);
+  } else {
+    hideInputError(inputElement, errorElement, inputErrorClass, errorClass);
+  }
+```
+
+Добавлена возможность закрывать открытый попап кнопкой Esc или кликом в пустоту.
+
+```javascript
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+  popup.addEventListener("click", closeOnClick);
+  document.addEventListener("keydown", closeOnEsc);
 }
-const renderCard = (data) => {
-  cardsContainer.prepend(createCard(data));
-```
-
-Также происходит инициализация нескольких карточек из готового массива данных.
-
-```javascript
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https:...jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https:...jpg",
-  },
-  ...
-```
-
-Добавлены функции удаления карточек и отметки "Нравится".
-
-```javascript
-const likeCard = (evt) =>
-  evt.target.classList.toggle("card__button-like_active");
-
-const removeCardHandler = (evt) => evt.target.closest("li").remove();
 ```
 
 ---
