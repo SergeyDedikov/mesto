@@ -65,23 +65,16 @@ const isFormNotValid = (inputList) => {
 };
 
 const disableButtonSubmit = (buttonElement, inactiveButtonClass) => {
-  buttonElement.setAttribute('disabled', true);
+  buttonElement.setAttribute("disabled", true);
   buttonElement.classList.add(inactiveButtonClass);
 };
 
 const enableButtonSubmit = (buttonElement, inactiveButtonClass) => {
-  buttonElement.removeAttribute('disabled');
+  buttonElement.removeAttribute("disabled");
   buttonElement.classList.remove(inactiveButtonClass);
 };
 
-function toggleButtonState(
-  formElement,
-  inputList,
-  submitButtonSelector,
-  inactiveButtonClass
-) {
-  const buttonElement = formElement.querySelector(submitButtonSelector);
-
+function toggleButtonState(inputList, buttonElement, inactiveButtonClass) {
   if (isFormNotValid(inputList)) {
     disableButtonSubmit(buttonElement, inactiveButtonClass);
   } else {
@@ -98,17 +91,16 @@ const setEventListeners = (
   inactiveButtonClass
 ) => {
   formElement.addEventListener("submit", () => {
-    disableButtonSubmit(formElement.querySelector(submitButtonSelector), inactiveButtonClass);
+    disableButtonSubmit(
+      buttonElement,
+      inactiveButtonClass
+    );
   });
 
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+  const buttonElement = formElement.querySelector(submitButtonSelector);
 
-  toggleButtonState(
-    formElement,
-    inputList,
-    submitButtonSelector,
-    inactiveButtonClass
-  );
+  toggleButtonState(inputList, buttonElement, inactiveButtonClass);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
@@ -118,12 +110,7 @@ const setEventListeners = (
         inputErrorClass,
         errorClass
       );
-      toggleButtonState(
-        formElement,
-        inputList,
-        submitButtonSelector,
-        inactiveButtonClass
-      );
+      toggleButtonState(inputList, buttonElement, inactiveButtonClass);
     });
   });
 };
