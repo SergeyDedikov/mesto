@@ -141,7 +141,7 @@ const removeCardHandler = (evt) => evt.target.closest("li").remove();
 
 /** Call Functions */
 
-initialCards.forEach((data) => renderCard(data));
+initialCards.forEach(renderCard);
 
 buttonEditProfile.addEventListener("click", () => {
   openPopup(popupEditProfile);
