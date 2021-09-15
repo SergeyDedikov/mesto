@@ -26,6 +26,8 @@ const buttonCloseAddPlace = document.querySelector(".popup__close_add-place");
 
 const popupCard = document.querySelector(".popup_type_card");
 const buttonClosePopupCard = document.querySelector(".popup__close_card");
+const cardImagePopup = popupCard.querySelector(".popup__card-image");
+const cardImagePopupDescript = popupCard.querySelector(".popup__card-description");
 
 /** Cards Constants*/
 
@@ -98,15 +100,15 @@ function submitFormProfile(evt) {
 
 const createCard = (data) => {
   const card = cardTemplate.querySelector("li").cloneNode(true);
-  card.querySelector(".card__photo").src = data.link;
-  card.querySelector(".card__photo").alt = "На фотографии: " + data.name;
+  const cardImage = card.querySelector(".card__photo");
+  cardImage.src = data.link;
+  cardImage.alt = "На фотографии: " + data.name;
   card.querySelector(".card__description").textContent = data.name;
-  card.querySelector(".card__photo").addEventListener("click", () => {
+  cardImage.addEventListener("click", () => {
     openPopup(popupCard);
-    popupCard.querySelector(".popup__card-image").src = data.link;
-    popupCard.querySelector(".popup__card-image").alt =
-      "На фотографии: " + data.name;
-    popupCard.querySelector(".popup__card-description").textContent = data.name;
+    cardImagePopup.src = data.link;
+    cardImagePopup.alt = "На фотографии: " + data.name;
+    cardImagePopupDescript.textContent = data.name;
   });
   card.querySelector(".card__button-like").addEventListener("click", likeCard);
   card
