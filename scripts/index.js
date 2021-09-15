@@ -70,7 +70,6 @@ function closeOnClick(evt) {
 function closeOnEsc(evt) {
   if (evt.key === "Escape") {
     closePopup(document.querySelector(".popup_opened"));
-    document.removeEventListener("keydown", closeOnEsc);
   }
 }
 
@@ -83,6 +82,7 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
   popup.removeEventListener("click", closeOnClick);
+  document.removeEventListener("keydown", closeOnEsc);
 }
 
 /** Edit Profile Submit */
