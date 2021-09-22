@@ -22,6 +22,41 @@ const nameAddPlace = document.querySelector(".popup__input_value_place");
 const linkAddPlace = document.querySelector(".popup__input_value_link");
 const buttonCloseAddPlace = document.querySelector(".popup__close_add-place");
 
+/** Popup Functions */
+
+function closeOnClick(evt) {
+  if (evt.target.classList.contains("popup")) {
+    closePopup(evt.target);
+  }
+}
+
+function closeOnEsc(evt) {
+  if (evt.key === "Escape") {
+    closePopup(document.querySelector(".popup_opened"));
+  }
+}
+
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+  popup.addEventListener("click", closeOnClick);
+  document.addEventListener("keydown", closeOnEsc);
+}
+
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
+  popup.removeEventListener("click", closeOnClick);
+  document.removeEventListener("keydown", closeOnEsc);
+}
+
+/** Edit Profile Submit */
+
+function submitFormProfile(evt) {
+  evt.preventDefault();
+  nameProfile.textContent = nameInput.value;
+  jobProfile.textContent = jobInput.value;
+  closePopup(popupEditProfile);
+}
+
 /** PopupCard Constants */
 
 const popupCard = document.querySelector(".popup_type_card");
@@ -61,42 +96,7 @@ const initialCards = [
   },
 ];
 
-/** Popup Functions */
-
-function closeOnClick(evt) {
-  if (evt.target.classList.contains("popup")) {
-    closePopup(evt.target);
-  }
-}
-
-function closeOnEsc(evt) {
-  if (evt.key === "Escape") {
-    closePopup(document.querySelector(".popup_opened"));
-  }
-}
-
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  popup.addEventListener("click", closeOnClick);
-  document.addEventListener("keydown", closeOnEsc);
-}
-
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-  popup.removeEventListener("click", closeOnClick);
-  document.removeEventListener("keydown", closeOnEsc);
-}
-
-/** Edit Profile Submit */
-
-function submitFormProfile(evt) {
-  evt.preventDefault();
-  nameProfile.textContent = nameInput.value;
-  jobProfile.textContent = jobInput.value;
-  closePopup(popupEditProfile);
-}
-
-/** Popup Card Functions */
+/** Card Functions */
 
 const createCard = (data) => {
   const card = cardTemplate.querySelector("li").cloneNode(true);
