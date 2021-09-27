@@ -1,5 +1,6 @@
 import {
   cardsContainer,
+  initCards,
   popupCard,
   buttonClosePopupCard,
   popupEditProfile,
@@ -31,9 +32,14 @@ function submitFormProfile(evt) {
   closePopup(popupEditProfile);
 }
 
-/** Card Handler*/
+/** Cards Renders*/
 
-const addCardHandler = (evt) => {
+initCards.forEach((item) => {
+  const card = new Card(item, "#card-template");
+  cardsContainer.append(card.generateCard());
+});
+
+function addCardHandler(evt) {
   evt.preventDefault();
 
   const card = new Card(
