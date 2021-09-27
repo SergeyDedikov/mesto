@@ -1,52 +1,19 @@
-/** Edit Profile Constants */
+import {
+  popupCard,
+  buttonClosePopupCard,
+  popupEditProfile,
+  buttonEditProfile,
+  formEditProfile,
+  buttonCloseEditProfile,
+  nameInput,
+  jobInput,
+  nameProfile,
+  jobProfile,
+} from "./consts.js";
 
-const popupEditProfile = document.querySelector(".popup_type_edit-profile");
-const buttonEditProfile = document.querySelector(".profile__button_type_edit");
-const formEditProfile = document.querySelector(
-  ".popup__container_type_edit-profile"
-);
-const buttonCloseEditProfile = document.querySelector(
-  ".popup__close_edit-profile"
-);
-const nameInput = formEditProfile.querySelector(".popup__input_value_name");
-const jobInput = formEditProfile.querySelector(".popup__input_value_job");
-const nameProfile = document.querySelector(".profile__name");
-const jobProfile = document.querySelector(".profile__job");
+import { openPopup, closePopup } from "./utils.js";
 
-/** Add Place Constants */
-
-const popupAddPlace = document.querySelector(".popup_type_add-place");
-const buttonAddPlace = document.querySelector(".profile__button_type_add");
-const formAddPlace = document.querySelector(".popup__form_add-place");
-const nameAddPlace = document.querySelector(".popup__input_value_place");
-const linkAddPlace = document.querySelector(".popup__input_value_link");
-const buttonCloseAddPlace = document.querySelector(".popup__close_add-place");
-
-/** Popup Functions */
-
-function closeOnClick(evt) {
-  if (evt.target.classList.contains("popup")) {
-    closePopup(evt.target);
-  }
-}
-
-function closeOnEsc(evt) {
-  if (evt.key === "Escape") {
-    closePopup(document.querySelector(".popup_opened"));
-  }
-}
-
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  popup.addEventListener("click", closeOnClick);
-  document.addEventListener("keydown", closeOnEsc);
-}
-
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-  popup.removeEventListener("click", closeOnClick);
-  document.removeEventListener("keydown", closeOnEsc);
-}
+import { Card } from "./Card.js";
 
 /** Edit Profile Submit */
 
@@ -57,19 +24,19 @@ function submitFormProfile(evt) {
   closePopup(popupEditProfile);
 }
 
-/** PopupCard Constants */
+/** Add Place Constants */
 
-const popupCard = document.querySelector(".popup_type_card");
-const buttonClosePopupCard = document.querySelector(".popup__close_card");
-const cardImagePopup = popupCard.querySelector(".popup__card-image");
-const cardImagePopupDescript = popupCard.querySelector(".popup__card-description");
+const popupAddPlace = document.querySelector(".popup_type_add-place");
+const buttonAddPlace = document.querySelector(".profile__button_type_add");
+const formAddPlace = document.querySelector(".popup__form_add-place");
+const nameAddPlace = document.querySelector(".popup__input_value_place");
+const linkAddPlace = document.querySelector(".popup__input_value_link");
+const buttonCloseAddPlace = document.querySelector(".popup__close_add-place");
 
 /** Cards Constants*/
 
 const cardsContainer = document.querySelector(".cards__list");
-const cardTemplate = document.querySelector("#card-template").content;
-
-const initialCards = [
+const initCards = [
   {
     name: "Архыз",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
@@ -96,52 +63,30 @@ const initialCards = [
   },
 ];
 
-/** Card Functions */
+/** Card Renders*/
 
-const createCard = (data) => {
-  const card = cardTemplate.querySelector("li").cloneNode(true);
-  const cardImage = card.querySelector(".card__photo");
-  cardImage.src = data.link;
-  cardImage.alt = "На фотографии: " + data.name;
-  card.querySelector(".card__description").textContent = data.name;
-  cardImage.addEventListener("click", () => {
-    openPopup(popupCard);
-    cardImagePopup.src = data.link;
-    cardImagePopup.alt = "На фотографии: " + data.name;
-    cardImagePopupDescript.textContent = data.name;
-  });
-  card.querySelector(".card__button-like").addEventListener("click", likeCard);
-  card
-    .querySelector(".card__button-remove")
-    .addEventListener("click", removeCardHandler);
-
-  return card;
-};
-
-const renderCard = (data) => {
-  cardsContainer.prepend(createCard(data));
-};
+initCards.forEach((item) => {
+  const card = new Card(item, "#card-template");
+  cardsContainer.append(card.generateCard());
+});
 
 const addCardHandler = (evt) => {
   evt.preventDefault();
 
-  renderCard({
-    name: nameAddPlace.value,
-    link: linkAddPlace.value,
-  });
+  const card = new Card(
+    {
+      name: nameAddPlace.value,
+      link: linkAddPlace.value,
+    },
+    "#card-template"
+  );
+  cardsContainer.prepend(card.generateCard());
 
   formAddPlace.reset();
   closePopup(popupAddPlace);
 };
 
-const likeCard = (evt) =>
-  evt.target.classList.toggle("card__button-like_active");
-
-const removeCardHandler = (evt) => evt.target.closest("li").remove();
-
-/** Call Functions */
-
-initialCards.forEach(renderCard);
+/** Event Listeners */
 
 buttonEditProfile.addEventListener("click", () => {
   openPopup(popupEditProfile);
