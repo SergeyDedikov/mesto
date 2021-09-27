@@ -1,4 +1,5 @@
 import {
+  cardsContainer,
   popupCard,
   buttonClosePopupCard,
   popupEditProfile,
@@ -9,6 +10,12 @@ import {
   jobInput,
   nameProfile,
   jobProfile,
+  popupAddPlace,
+  buttonAddPlace,
+  formAddPlace,
+  nameAddPlace,
+  linkAddPlace,
+  buttonCloseAddPlace,
 } from "./consts.js";
 
 import { openPopup, closePopup } from "./utils.js";
@@ -24,51 +31,7 @@ function submitFormProfile(evt) {
   closePopup(popupEditProfile);
 }
 
-/** Add Place Constants */
-
-const popupAddPlace = document.querySelector(".popup_type_add-place");
-const buttonAddPlace = document.querySelector(".profile__button_type_add");
-const formAddPlace = document.querySelector(".popup__form_add-place");
-const nameAddPlace = document.querySelector(".popup__input_value_place");
-const linkAddPlace = document.querySelector(".popup__input_value_link");
-const buttonCloseAddPlace = document.querySelector(".popup__close_add-place");
-
-/** Cards Constants*/
-
-const cardsContainer = document.querySelector(".cards__list");
-const initCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
-
-/** Card Renders*/
-
-initCards.forEach((item) => {
-  const card = new Card(item, "#card-template");
-  cardsContainer.append(card.generateCard());
-});
+/** Card Handler*/
 
 const addCardHandler = (evt) => {
   evt.preventDefault();

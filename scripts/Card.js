@@ -1,4 +1,10 @@
-import { popupCard, cardImagePopup, cardImagePopupDescript } from "./consts.js";
+import {
+  cardsContainer,
+  initCards,
+  popupCard,
+  cardImagePopup,
+  cardImagePopupDescript,
+} from "./consts.js";
 
 import { openPopup } from "./utils.js";
 
@@ -52,3 +58,10 @@ export class Card {
     return this._element;
   }
 }
+
+// Отрисуем все карточки:
+
+initCards.forEach((item) => {
+  const card = new Card(item, "#card-template");
+  cardsContainer.append(card.generateCard());
+});
