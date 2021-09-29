@@ -20,7 +20,7 @@ import {
   validConfig,
 } from "./consts.js";
 
-//import ;
+import { FormValidator } from "./FormValidator.js";
 
 import { openPopup, closePopup } from "./utils.js";
 
@@ -28,12 +28,14 @@ import { Card } from "./Card.js";
 
 /** Forms Validation */
 
-/* const formEditProfileValidator = new FormValidator(validConfig, formEditProfile);
+const formEditProfileValidator = new FormValidator(
+  validConfig,
+  formEditProfile
+);
 formEditProfileValidator.enableValidation();
 
 const formAddPlaceValidator = new FormValidator(validConfig, formAddPlace);
 formAddPlaceValidator.enableValidation();
- */
 
 /** Edit Profile Submit */
 
@@ -65,7 +67,7 @@ function addCardHandler(evt) {
 
   formAddPlace.reset();
   closePopup(popupAddPlace);
-};
+}
 
 /** Event Listeners */
 
