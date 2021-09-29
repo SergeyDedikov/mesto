@@ -39,9 +39,7 @@ const cardImagePopupDescript = popupCard.querySelector(".popup__card-description
 
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
 const buttonEditProfile = document.querySelector(".profile__button_type_edit");
-const formEditProfile = document.querySelector(
-  ".popup__container_type_edit-profile"
-);
+const formEditProfile = document.querySelector(".popup__form_edit-profile");
 const buttonCloseEditProfile = document.querySelector(
   ".popup__close_edit-profile"
 );
@@ -59,6 +57,16 @@ const nameAddPlace = document.querySelector(".popup__input_value_place");
 const linkAddPlace = document.querySelector(".popup__input_value_link");
 const buttonCloseAddPlace = document.querySelector(".popup__close_add-place");
 
+//** Validation Configuration */
+
+const validConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
 
 export {
   cardsContainer,
@@ -81,4 +89,5 @@ export {
   nameAddPlace,
   linkAddPlace,
   buttonCloseAddPlace,
+  validConfig,
 };
