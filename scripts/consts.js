@@ -33,7 +33,9 @@ const initCards = [
 const popupCard = document.querySelector(".popup_type_card");
 const buttonClosePopupCard = document.querySelector(".popup__close_card");
 const cardImagePopup = popupCard.querySelector(".popup__card-image");
-const cardImagePopupDescript = popupCard.querySelector(".popup__card-description");
+const cardImagePopupDescript = popupCard.querySelector(
+  ".popup__card-description"
+);
 
 /** Edit Profile Constants */
 
@@ -67,6 +69,8 @@ const validConfig = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
 };
+
+//* --- */
 
 export {
   cardsContainer,
