@@ -54,7 +54,6 @@ function createCard(data) {
 }
 
 initCards.forEach((item) => {
-  createCard(item);
   cardsContainer.append(createCard(item).generateCard());
 });
 
