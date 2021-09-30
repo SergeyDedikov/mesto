@@ -53,18 +53,24 @@ function createCard(data) {
   return card;
 }
 
+function renderCard(data) {
+  return createCard(data).generateCard();
+}
+
 initCards.forEach((item) => {
-  cardsContainer.append(createCard(item).generateCard());
+  cardsContainer.append(renderCard(item));
 });
 
 function addCardHandler(evt) {
   evt.preventDefault();
+
   cardsContainer.prepend(
-    createCard({
+    renderCard({
       name: nameAddPlace.value,
       link: linkAddPlace.value,
-    }).generateCard()
+    })
   );
+  
   formAddPlace.reset();
   closePopup(popupAddPlace);
 }
