@@ -76,13 +76,13 @@ buttonEditProfile.addEventListener("click", () => {
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
 });
+buttonAddPlace.addEventListener("click", () => openPopup(popupAddPlace));
+
 buttonCloseEditProfile.addEventListener("click", () =>
   closePopup(popupEditProfile)
 );
-formEditProfile.addEventListener("submit", submitFormProfile);
-
-buttonAddPlace.addEventListener("click", () => openPopup(popupAddPlace));
 buttonCloseAddPlace.addEventListener("click", () => closePopup(popupAddPlace));
-formAddPlace.addEventListener("submit", addCardHandler);
-
 buttonClosePopupCard.addEventListener("click", () => closePopup(popupCard));
+
+formEditProfile.addEventListener("submit", submitFormProfile);
+formAddPlace.addEventListener("submit", addCardHandler);
