@@ -43,7 +43,7 @@ export class FormValidator {
 
   _hasEmptyInput() {
     return this._inputList.every((inputElement) => {
-      return inputElement.value.lenght === 0;
+      return inputElement.value.length === 0;
     });
   }
 
