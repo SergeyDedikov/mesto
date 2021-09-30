@@ -46,25 +46,26 @@ function submitFormProfile(evt) {
   closePopup(popupEditProfile);
 }
 
-/** Cards Renders*/
+/** Cards Functions*/
+
+function createCard(data) {
+  const card = new Card(data, "#card-template");
+  return card;
+}
 
 initCards.forEach((item) => {
-  const card = new Card(item, "#card-template");
-  cardsContainer.append(card.generateCard());
+  createCard(item);
+  cardsContainer.append(createCard(item).generateCard());
 });
 
 function addCardHandler(evt) {
   evt.preventDefault();
-
-  const card = new Card(
-    {
+  cardsContainer.prepend(
+    createCard({
       name: nameAddPlace.value,
       link: linkAddPlace.value,
-    },
-    "#card-template"
+    }).generateCard()
   );
-  cardsContainer.prepend(card.generateCard());
-
   formAddPlace.reset();
   closePopup(popupAddPlace);
 }
