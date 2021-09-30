@@ -1,4 +1,4 @@
-# Практическая работа №6: Место
+# Практическая работа №7: Место
 
 - Описание
 - Особенности
@@ -8,61 +8,66 @@
 
 **Описание**
 
-Практическая работа №6 курса "Веб-разработчик" Яндекс.Практикума — продолжение разработки проекта **"Место"**, в котором продолжается изучение языка программирования **JavaScript**.
+Практическая работа №7 курса "Веб-разработчик" Яндекс.Практикума — продолжение разработки проекта **"Место"**, c дальнейшим изучением языка программирования **JavaScript**.
 
 ---
 
 **Особенности**
 
-В этой работе перед студентами поставлена задача: реализовать валидацию — проверку корректности — введённых пользователем данных.
+В этой работе перед студентами поставлена задача: провести рефакторинг кода для блока создания карточек мест и блока валидации форм посредством реализации классов JS и разделения кода на отдельные модули.
 
-Валидация проверяет все поля ввода в каждой форме посредством установки обработчиков событий:
-
-```javascript
-inputList.forEach((inputElement) => {
-    inputElement.addEventListener("input", () => {
-      checkInputValidity(
-        formElement,
-        inputElement,
-        ...
-```
-
-Следит за состоянием кнопки отправки формы и переключает её доступность:
+Класс Card в отдельном модуле Card.js принимает импортированные параметры и содержит конструктор и методы для создания элемента карточек:
 
 ```javascript
-toggleButtonState(
-        formElement,
-        inputList,
-        ...
-if (isFormNotValid(inputList)) {
-    disableButtonSubmit(buttonElement, inactiveButtonClass);
-  } else {
-    enableButtonSubmit(buttonElement, inactiveButtonClass);
+import {
+  popupCard,
+  cardImagePopup,
+  cardImagePopupDescript
+} from "./consts.js";
+
+import { openPopup } from "./utils.js";
+
+export class Card {
+  constructor(data, selector) {
+    this._name = data.name;
+    this._link = data.link;
+    this._selector = selector;
   }
+  ...
 ```
 
-Также происходит оттображение/скрытие ошибок при несоответствии введённых данных предназначенным для них полям:
+Затем в index.js отрисовываются на страницу :
 
 ```javascript
-if (!inputElement.validity.valid) {
-    showInputError(inputElement, errorElement, inputErrorClass, errorClass);
-  } else {
-    hideInputError(inputElement, errorElement, inputErrorClass, errorClass);
+initCards.forEach((item) => {
+  const card = new Card(item, "#card-template");
+  cardsContainer.append(card.generateCard());
+});
+```
+
+Подобным образом реализована работа класса FormValidator для валидации форм:
+
+```javascript
+export class FormValidator {
+  constructor(validConfig, formElement) {
+    this._formElement = formElement;
+    this._inputSelector = validConfig.inputSelector;
+    this._submitButtonSelector = validConfig.submitButtonSelector;
+    this._inactiveButtonClass = validConfig.inactiveButtonClass;
+    ...
+    enableValidation() {
+    this._setEventListeners();
   }
-```
-
-Добавлена возможность закрывать открытый попап кнопкой Esc или кликом в пустоту.
-
-```javascript
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  popup.addEventListener("click", closeOnClick);
-  document.addEventListener("keydown", closeOnEsc);
 }
+```
+
+```javascript
+const formAddPlaceValidator = new FormValidator(validConfig, formAddPlace);
+formAddPlaceValidator.enableValidation();
 ```
 
 ---
 
 **Ссылка на работу**
 
-Посмотреть практическую работу можно [здесь](https://sergeydedikov.github.io/mesto/index.html)
+Посмотреть реализацию проекта **"Место"** можно [по ссылке](https://sergeydedikov.github.io/mesto/index.html)
