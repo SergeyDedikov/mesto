@@ -14,24 +14,25 @@ export class FormValidator {
     );
   }
 
-  _showInputError(inputElement, errorElement) {
+  _showInputError(inputElement) {
+    const errorElement = inputElement.nextElementSibling;
     inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = inputElement.validationMessage;
     errorElement.classList.add(this._errorClass);
   }
 
-  _hideInputError(inputElement, errorElement) {
+  _hideInputError(inputElement) {
+    const errorElement = inputElement.nextElementSibling;
     errorElement.classList.remove(this._errorClass);
     errorElement.textContent = "";
     inputElement.classList.remove(this._inputErrorClass);
   }
 
   _checkInputValidity = (inputElement) => {
-    const errorElement = inputElement.nextElementSibling;
     if (!inputElement.validity.valid) {
-      this._showInputError(inputElement, errorElement);
+      this._showInputError(inputElement);
     } else {
-      this._hideInputError(inputElement, errorElement);
+      this._hideInputError(inputElement);
     }
   };
 
@@ -86,5 +87,12 @@ export class FormValidator {
 
   enableValidation() {
     this._setEventListeners();
+  }
+
+  resetValidation() {
+    this._toggleButtonState();
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
   }
 }
