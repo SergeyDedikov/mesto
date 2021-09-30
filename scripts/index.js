@@ -72,11 +72,16 @@ function addCardHandler(evt) {
 /** Event Listeners */
 
 buttonEditProfile.addEventListener("click", () => {
+  formEditProfileValidator.resetValidation();
   openPopup(popupEditProfile);
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
 });
-buttonAddPlace.addEventListener("click", () => openPopup(popupAddPlace));
+
+buttonAddPlace.addEventListener("click", () => {
+  formAddPlaceValidator.resetValidation();
+  openPopup(popupAddPlace);
+});
 
 buttonCloseEditProfile.addEventListener("click", () =>
   closePopup(popupEditProfile)
