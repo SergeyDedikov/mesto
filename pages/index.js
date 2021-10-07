@@ -75,21 +75,20 @@ const cardList = new Section({
 
 cardList.renderItems();
 
-/*
 function addCardHandler(evt) {
   evt.preventDefault();
 
-  cardsContainer.prepend(
-    renderCard({
-      name: nameAddPlace.value,
-      link: linkAddPlace.value,
-    })
-  );
+  const card = new Card({
+    name: nameAddPlace.value,
+    link: linkAddPlace.value,
+  }, "#card-template");
+
+  cardsContainer.prepend(card.generateCard());
 
   formAddPlace.reset();
   closePopup(popupAddPlace);
 }
- */
+
 /** Event Listeners */
 
 buttonEditProfile.addEventListener("click", () => {
