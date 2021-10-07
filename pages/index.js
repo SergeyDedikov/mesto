@@ -26,6 +26,8 @@ import { openPopup, closePopup } from "../utils/utils.js";
 
 import { Card } from "../components/Card.js";
 
+import Section from "../components/Section.js";
+
 /** Forms Validation */
 
 const formEditProfileValidator = new FormValidator(
@@ -47,7 +49,7 @@ function submitFormProfile(evt) {
 }
 
 /** Cards Functions */
-
+/*
 function createCard(data) {
   const card = new Card(data, "#card-template");
   return card;
@@ -60,7 +62,20 @@ function renderCard(data) {
 initCards.forEach((item) => {
   cardsContainer.append(renderCard(item));
 });
+ */
 
+const cardList = new Section({
+  items: initCards,
+  renderer: (data) => {
+    const card = new Card(data, "#card-template");
+    const cardElement = card.generateCard();
+    cardList.addItem(cardElement);
+  }
+}, cardsContainer);
+
+cardList.renderItems();
+
+/*
 function addCardHandler(evt) {
   evt.preventDefault();
 
@@ -74,7 +89,7 @@ function addCardHandler(evt) {
   formAddPlace.reset();
   closePopup(popupAddPlace);
 }
-
+ */
 /** Event Listeners */
 
 buttonEditProfile.addEventListener("click", () => {
