@@ -1,4 +1,4 @@
-import { popupCard, cardImagePopup, cardImagePopupDescript } from "./consts.js";
+import { popupCard, cardImagePopup, cardImagePopupDescript } from "../utils/consts.js";
 
 import { openPopup } from "./utils.js";
 

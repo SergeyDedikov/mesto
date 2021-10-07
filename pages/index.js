@@ -18,7 +18,7 @@ import {
   linkAddPlace,
   buttonCloseAddPlace,
   validConfig,
-} from "../components/consts.js";
+} from "../utils/consts.js";
 
 import { FormValidator } from "../components/FormValidator.js";
 
