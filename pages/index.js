@@ -22,7 +22,7 @@ import {
 
 import { FormValidator } from "../components/FormValidator.js";
 
-import { openPopup, closePopup } from "../components/utils.js";
+import { openPopup, closePopup } from "../utils/utils.js";
 
 import { Card } from "../components/Card.js";
 
