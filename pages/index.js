@@ -66,8 +66,8 @@ initCards.forEach((item) => {
 
 const cardList = new Section({
   items: initCards,
-  renderer: (data) => {
-    const card = new Card(data, "#card-template");
+  renderer: (cardItem) => {
+    const card = new Card(cardItem, "#card-template");
     const cardElement = card.generateCard();
     cardList.addItem(cardElement);
   }
