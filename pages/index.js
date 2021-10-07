@@ -46,7 +46,7 @@ function submitFormProfile(evt) {
   closePopup(popupEditProfile);
 }
 
-/** Cards Functions*/
+/** Cards Functions */
 
 function createCard(data) {
   const card = new Card(data, "#card-template");
