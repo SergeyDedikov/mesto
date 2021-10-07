@@ -18,13 +18,13 @@ import {
   linkAddPlace,
   buttonCloseAddPlace,
   validConfig,
-} from "./consts.js";
+} from "../scripts/consts.js";
 
-import { FormValidator } from "./FormValidator.js";
+import { FormValidator } from "../scripts/FormValidator.js";
 
-import { openPopup, closePopup } from "./utils.js";
+import { openPopup, closePopup } from "../scripts/utils.js";
 
-import { Card } from "./Card.js";
+import { Card } from "../scripts/Card.js";
 
 /** Forms Validation */
 
@@ -70,7 +70,7 @@ function addCardHandler(evt) {
       link: linkAddPlace.value,
     })
   );
-  
+
   formAddPlace.reset();
   closePopup(popupAddPlace);
 }
