@@ -5,8 +5,8 @@ export default class PopupWithImage extends Popup {
     super(popupSelector);
     this._name = data.name;
     this._link = data.link;
-    this._image = this.popupSelector.querySelector(".popup__card-image");
-    this._description = this.popupSelector.querySelector(
+    this._image = this._popup.querySelector(".popup__card-image");
+    this._description = this._popup.querySelector(
       ".popup__card-description"
     );
   }
