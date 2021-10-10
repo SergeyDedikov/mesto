@@ -81,11 +81,11 @@ cardList.renderItems();
 
 const popupWithFormAddPlace = new PopupWithForm(
   popupAddPlace,
-  ({ nameValue, linkValue }) => {
+  ({ place, link }) => {
     debugger
     const data = {
-      name: nameValue,
-      link: linkValue,
+      name: place,
+      link: link,
     };
     cardsContainer.prepend(renderCard(data));
   }
