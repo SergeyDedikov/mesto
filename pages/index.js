@@ -119,12 +119,13 @@ function submitFormProfile(evt) {
  */
 /** Event Listeners */
 
+/*
 buttonEditProfile.addEventListener("click", () => {
   formEditProfileValidator.resetValidation();
-  openPopup(popupEditProfile);
+  //openPopup(popupEditProfile);
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
-});
+}); */
 
 buttonAddPlace.addEventListener("click", () => {
   formAddPlaceValidator.resetValidation();
