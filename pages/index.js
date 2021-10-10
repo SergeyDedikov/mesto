@@ -34,7 +34,6 @@ import PopupWithImage from "../components/PopupWithImage.js";
 
 //import { openPopup, closePopup } from "../utils/utils.js";
 
-
 /** Forms Validation */
 
 const formEditProfileValidator = new FormValidator(
@@ -46,19 +45,19 @@ formEditProfileValidator.enableValidation();
 const formAddPlaceValidator = new FormValidator(validConfig, formAddPlace);
 formAddPlaceValidator.enableValidation();
 
-/** Edit Profile Submit */
-
-function submitFormProfile(evt) {
-  evt.preventDefault();
-  nameProfile.textContent = nameInput.value;
-  jobProfile.textContent = jobInput.value;
-  closePopup(popupEditProfile);
-}
-
 /** Cards Functions */
-/*
+
+const popupCardImage = new PopupWithImage(popupCard);
+popupCardImage.setEventListeners();
+
 function createCard(data) {
-  const card = new Card(data, "#card-template");
+  const card = new Card(
+    {
+      data,
+      handleCardClick: popupCardImage.open.bind(popupCardImage),
+    },
+    "#card-template"
+  );
   return card;
 }
 
@@ -66,22 +65,34 @@ function renderCard(data) {
   return createCard(data).generateCard();
 }
 
-initCards.forEach((item) => {
-  cardsContainer.append(renderCard(item));
-});
- */
-
-const cardList = new Section({
-  items: initCards,
-  renderer: (cardItem) => {
-    const card = new Card(cardItem, "#card-template");
-    const cardElement = card.generateCard();
-    cardList.addItem(cardElement);
-  }
-}, cardsContainer);
+const cardList = new Section(
+  {
+    items: initCards,
+    renderer: (cardItem) => {
+      cardList.addItem(renderCard(cardItem));
+    },
+  },
+  cardsContainer
+);
 
 cardList.renderItems();
 
+/** FormSubmit AddPlace */
+
+const popupWithFormAddPlace = new PopupWithForm(
+  popupAddPlace,
+  ({ nameValue, linkValue }) => {
+    const data = {
+      name: nameValue,
+      link: linkValue,
+    };
+    cardsContainer.prepend(renderCard(data));
+  }
+);
+
+popupWithFormAddPlace.setEventListeners();
+
+/*
 function addCardHandler(evt) {
   evt.preventDefault();
 
@@ -94,8 +105,17 @@ function addCardHandler(evt) {
 
   formAddPlace.reset();
   closePopup(popupAddPlace);
-}
+} */
 
+/** Edit Profile Submit */
+/*
+function submitFormProfile(evt) {
+  evt.preventDefault();
+  nameProfile.textContent = nameInput.value;
+  jobProfile.textContent = jobInput.value;
+  closePopup(popupEditProfile);
+}
+ */
 /** Event Listeners */
 
 buttonEditProfile.addEventListener("click", () => {
@@ -107,9 +127,10 @@ buttonEditProfile.addEventListener("click", () => {
 
 buttonAddPlace.addEventListener("click", () => {
   formAddPlaceValidator.resetValidation();
-  openPopup(popupAddPlace);
+  popupWithFormAddPlace.open();
 });
 
+/*
 buttonCloseEditProfile.addEventListener("click", () =>
   closePopup(popupEditProfile)
 );
@@ -118,3 +139,4 @@ buttonClosePopupCard.addEventListener("click", () => closePopup(popupCard));
 
 formEditProfile.addEventListener("submit", submitFormProfile);
 formAddPlace.addEventListener("submit", addCardHandler);
+ */

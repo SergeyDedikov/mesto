@@ -1,4 +1,4 @@
-/** Cards Constants*/
+/** Cards Constants */
 
 const cardsContainer = document.querySelector(".cards__list");
 const initCards = [
