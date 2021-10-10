@@ -82,6 +82,7 @@ cardList.renderItems();
 const popupWithFormAddPlace = new PopupWithForm(
   popupAddPlace,
   ({ nameValue, linkValue }) => {
+    debugger
     const data = {
       name: nameValue,
       link: linkValue,
