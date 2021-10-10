@@ -1,12 +1,9 @@
-import { popupCard, cardImagePopup, cardImagePopupDescript } from "../utils/constants.js";
-
-import { openPopup } from "../utils/utils.js";
-
-export class Card {
-  constructor(data, selector) {
+export default class Card {
+  constructor({ data, handleCardClick }, selector) {
     this._name = data.name;
     this._link = data.link;
     this._selector = selector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getElement() {
@@ -30,10 +27,16 @@ export class Card {
   }
 
   _openPopup = () => {
-    openPopup(popupCard);
+    this._handleCardClick({
+      //передадим объект во внешнюю функцию
+      text: this._name,
+      link: this._link,
+    });
+
+    /* openPopup(popupCard);
     cardImagePopup.src = this._link;
     cardImagePopup.alt = "На фотографии: " + this._name;
-    cardImagePopupDescript.textContent = this._name;
+    cardImagePopupDescript.textContent = this._name; */
   };
 
   _likeCard = (evt) => evt.target.classList.toggle("card__button-like_active");
