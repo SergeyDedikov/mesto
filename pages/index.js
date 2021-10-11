@@ -94,13 +94,15 @@ popupWithFormAddPlace.setEventListeners();
 
 const userInfo = new UserInfo({ nameProfile, jobProfile });
 
-function getUserData() {                           //обработчик данных о пользователе
-  const data = userInfo.getUserInfo();             //получаем объект с данными
-  for (let input in data) {                        // переберём значения в объекте
-    const formUser = document.forms.editProfile;   //определим форму
-    formUser.elements[input].value = data[input];  //заменим значения полей ввода
+function getUserData() {
+  //обработчик данных о пользователе
+  const data = userInfo.getUserInfo(); //получаем объект с данными
+  for (let input in data) {
+    // переберём значения в объекте
+    const formUser = document.forms.editProfile; //определим форму
+    formUser.elements[input].value = data[input]; //заменим значения полей ввода
   }
-};
+}
 
 /** FormSubmit EditProfile */
 
@@ -113,37 +115,15 @@ const popupWithFormEditProfile = new PopupWithForm(
 
 popupWithFormEditProfile.setEventListeners();
 
-/*
-function submitFormProfile(evt) {
-  evt.preventDefault();
-  nameProfile.textContent = nameInput.value;
-  jobProfile.textContent = jobInput.value;
-  closePopup(popupEditProfile);
-}
- */
 /** Event Listeners */
 
 buttonEditProfile.addEventListener("click", () => {
   formEditProfileValidator.resetValidation();
   popupWithFormEditProfile.open();
   getUserData();
-  //userInfo.getUserInfo();
-  //nameInput.value = nameProfile.textContent;
-  //jobInput.value = jobProfile.textContent;
 });
 
 buttonAddPlace.addEventListener("click", () => {
   formAddPlaceValidator.resetValidation();
   popupWithFormAddPlace.open();
 });
-
-/*
-buttonCloseEditProfile.addEventListener("click", () =>
-  closePopup(popupEditProfile)
-);
-buttonCloseAddPlace.addEventListener("click", () => closePopup(popupAddPlace));
-buttonClosePopupCard.addEventListener("click", () => closePopup(popupCard));
-
-formEditProfile.addEventListener("submit", submitFormProfile);
-formAddPlace.addEventListener("submit", addCardHandler);
- */
