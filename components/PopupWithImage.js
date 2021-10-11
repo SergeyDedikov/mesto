@@ -12,6 +12,5 @@ export default class PopupWithImage extends Popup {
     this._image.alt = "На фотографии: " + text;
     this._description.textContent = text;
     super.open();
-    //super.setEventListeners();
   }
 }

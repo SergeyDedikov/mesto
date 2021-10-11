@@ -48,7 +48,7 @@ formAddPlaceValidator.enableValidation();
 /** Cards Functions */
 
 const popupCardImage = new PopupWithImage(popupCard);
-//popupCardImage.setEventListeners();
+popupCardImage.setEventListeners();
 
 function createCard(data) {
   const card = new Card(
@@ -82,7 +82,6 @@ cardList.renderItems();
 const popupWithFormAddPlace = new PopupWithForm(
   popupAddPlace,
   ({ place, link }) => {
-    debugger
     const data = {
       name: place,
       link: link,
@@ -130,7 +129,6 @@ buttonEditProfile.addEventListener("click", () => {
 buttonAddPlace.addEventListener("click", () => {
   formAddPlaceValidator.resetValidation();
   popupWithFormAddPlace.open();
-
 });
 
 /*
