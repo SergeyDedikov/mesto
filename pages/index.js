@@ -32,8 +32,6 @@ import PopupWithForm from "../components/PopupWithForm.js";
 
 import PopupWithImage from "../components/PopupWithImage.js";
 
-//import { openPopup, closePopup } from "../utils/utils.js";
-
 /** Forms Validation */
 
 const formEditProfileValidator = new FormValidator(
@@ -92,22 +90,29 @@ const popupWithFormAddPlace = new PopupWithForm(
 
 popupWithFormAddPlace.setEventListeners();
 
-/*
-function addCardHandler(evt) {
-  evt.preventDefault();
+/** UserProfile */
 
-  const card = new Card({
-    name: nameAddPlace.value,
-    link: linkAddPlace.value,
-  }, "#card-template");
+const userInfo = new UserInfo({ nameProfile, jobProfile });
 
-  cardsContainer.prepend(card.generateCard());
+function getUserData() {                           //обработчик данных о пользователе
+  const data = userInfo.getUserInfo();             //получаем объект с данными
+  for (let input in data) {                        // переберём значения в объекте
+    const formUser = document.forms.editProfile;   //определим форму
+    formUser.elements[input].value = data[input];  //заменим значения полей ввода
+  }
+};
 
-  formAddPlace.reset();
-  closePopup(popupAddPlace);
-} */
+/** FormSubmit EditProfile */
 
-/** Edit Profile Submit */
+const popupWithFormEditProfile = new PopupWithForm(
+  popupEditProfile,
+  (userData) => {
+    userInfo.setUserInfo(userData);
+  }
+);
+
+popupWithFormEditProfile.setEventListeners();
+
 /*
 function submitFormProfile(evt) {
   evt.preventDefault();
@@ -118,13 +123,14 @@ function submitFormProfile(evt) {
  */
 /** Event Listeners */
 
-/*
 buttonEditProfile.addEventListener("click", () => {
   formEditProfileValidator.resetValidation();
-  //openPopup(popupEditProfile);
-  nameInput.value = nameProfile.textContent;
-  jobInput.value = jobProfile.textContent;
-}); */
+  popupWithFormEditProfile.open();
+  getUserData();
+  //userInfo.getUserInfo();
+  //nameInput.value = nameProfile.textContent;
+  //jobInput.value = jobProfile.textContent;
+});
 
 buttonAddPlace.addEventListener("click", () => {
   formAddPlaceValidator.resetValidation();
