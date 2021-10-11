@@ -2,7 +2,6 @@ import {
   cardsContainer,
   initCards,
   popupCard,
-  buttonClosePopupCard,
   popupEditProfile,
   buttonEditProfile,
   formEditProfile,

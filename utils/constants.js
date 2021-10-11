@@ -31,11 +31,6 @@ const initCards = [
 /** PopupCard Constants */
 
 const popupCard = document.querySelector(".popup_type_card");
-const buttonClosePopupCard = document.querySelector(".popup__close_card");
-const cardImagePopup = popupCard.querySelector(".popup__card-image");
-const cardImagePopupDescript = popupCard.querySelector(
-  ".popup__card-description"
-);
 
 /** Edit Profile Constants */
 
@@ -76,9 +71,6 @@ export {
   cardsContainer,
   initCards,
   popupCard,
-  buttonClosePopupCard,
-  cardImagePopup,
-  cardImagePopupDescript,
   popupEditProfile,
   buttonEditProfile,
   formEditProfile,
