@@ -39,7 +39,6 @@ formAddPlaceValidator.enableValidation();
 /** Cards Functions */
 
 const popupCardImage = new PopupWithImage(popupCard);
-popupCardImage.setEventListeners();
 
 function createCard(data) {
   const card = new Card(
@@ -68,7 +67,7 @@ const cardList = new Section(
 
 cardList.renderItems();
 
-/** FormSubmit AddPlace */
+/** Form AddPlace */
 
 const popupWithFormAddPlace = new PopupWithForm(
   popupAddPlace,
@@ -81,9 +80,7 @@ const popupWithFormAddPlace = new PopupWithForm(
   }
 );
 
-popupWithFormAddPlace.setEventListeners();
-
-/** UserProfile */
+/** UserProfile && Form */
 
 const userInfo = new UserInfo({ nameProfile, jobProfile });
 
@@ -97,8 +94,6 @@ function getUserData() {
   }
 }
 
-/** FormSubmit EditProfile */
-
 const popupWithFormEditProfile = new PopupWithForm(
   popupEditProfile,
   (userData) => {
@@ -106,9 +101,11 @@ const popupWithFormEditProfile = new PopupWithForm(
   }
 );
 
-popupWithFormEditProfile.setEventListeners();
+/** EventListeners */
 
-/** Event Listeners */
+popupCardImage.setEventListeners();
+popupWithFormEditProfile.setEventListeners();
+popupWithFormAddPlace.setEventListeners();
 
 buttonEditProfile.addEventListener("click", () => {
   formEditProfileValidator.resetValidation();
