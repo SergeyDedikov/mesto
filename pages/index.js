@@ -10,9 +10,6 @@ import {
   popupAddPlace,
   buttonAddPlace,
   formAddPlace,
-  nameAddPlace,
-  linkAddPlace,
-  buttonCloseAddPlace,
   validConfig,
 } from "../utils/constants.js";
 
