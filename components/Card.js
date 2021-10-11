@@ -32,11 +32,6 @@ export default class Card {
       text: this._name,
       link: this._link,
     });
-
-    /* openPopup(popupCard);
-    cardImagePopup.src = this._link;
-    cardImagePopup.alt = "На фотографии: " + this._name;
-    cardImagePopupDescript.textContent = this._name; */
   };
 
   _likeCard = (evt) => evt.target.classList.toggle("card__button-like_active");
