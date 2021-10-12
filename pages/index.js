@@ -3,8 +3,6 @@ import {
   initCards,
   buttonEditProfile,
   formEditProfile,
-  nameProfile,
-  jobProfile,
   buttonAddPlace,
   formAddPlace,
   validConfig,
@@ -79,7 +77,7 @@ const popupAddPlace = new PopupWithForm(
 
 /** UserProfile && Form */
 
-const userInfo = new UserInfo({ nameProfile, jobProfile });
+const userInfo = new UserInfo(".profile__name", ".profile__job");
 
 function getUserData() {                              //обработчик данных о пользователе
   const data = userInfo.getUserInfo();                //получаем объект с данными

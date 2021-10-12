@@ -32,8 +32,6 @@ const initCards = [
 
 const buttonEditProfile = document.querySelector(".profile__button_type_edit");
 const formEditProfile = document.querySelector(".popup__form_edit-profile");
-const nameProfile = document.querySelector(".profile__name");
-const jobProfile = document.querySelector(".profile__job");
 
 /** Add Place Constants */
 
@@ -58,8 +56,6 @@ export {
   initCards,
   buttonEditProfile,
   formEditProfile,
-  nameProfile,
-  jobProfile,
   buttonAddPlace,
   formAddPlace,
   validConfig,
