@@ -50,15 +50,13 @@ cardList.renderItems();
 Более хитроумно получаем информацию о пользователе со страницы и отображаем в полях ввода данных в соответсвующей форме при открытии последней:
 
 ```javascript
-const userInfo = new UserInfo({ nameProfile, jobProfile });
+const userInfo = new UserInfo(".profile__name", ".profile__job");
 
-function getUserData() {
-  //обработчик данных о пользователе
-  const data = userInfo.getUserInfo(); //получаем объект с данными
-  for (let input in data) {
-    // переберём значения в объекте
-    const formUser = document.forms.editProfile; //определим форму
-    formUser.elements[input].value = data[input]; //заменим значения полей ввода
+function getUserData() {                           //обработчик данных о пользователе
+  const data = userInfo.getUserInfo();             //получаем объект с данными
+  for (let input in data) {                        // переберём ключи в объекте
+    const formUser = document.forms.editProfile;   //определим форму
+    formUser.elements[input].value = data[input];  //заменим значения полей ввода в форме
   }
 }
 ```
