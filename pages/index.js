@@ -1,13 +1,10 @@
 import {
   cardsContainer,
   initCards,
-  popupCard,
-  popupEditProfile,
   buttonEditProfile,
   formEditProfile,
   nameProfile,
   jobProfile,
-  popupAddPlace,
   buttonAddPlace,
   formAddPlace,
   validConfig,
@@ -38,13 +35,13 @@ formAddPlaceValidator.enableValidation();
 
 /** Cards Functions */
 
-const popupCardImage = new PopupWithImage(popupCard);
+const popupImage = new PopupWithImage(".popup_type_card");
 
 function createCard(data) {
   const card = new Card(
     {
       data,
-      handleCardClick: popupCardImage.open.bind(popupCardImage),
+      handleCardClick: popupImage.open.bind(popupImage),
     },
     "#card-template"
   );
@@ -69,8 +66,8 @@ cardList.renderItems();
 
 /** Form AddPlace */
 
-const popupWithFormAddPlace = new PopupWithForm(
-  popupAddPlace,
+const popupAddPlace = new PopupWithForm(
+  ".popup_type_add-place",
   ({ place, link }) => {
     const data = {
       name: place,
@@ -94,8 +91,8 @@ function getUserData() {
   }
 }
 
-const popupWithFormEditProfile = new PopupWithForm(
-  popupEditProfile,
+const popupEditProfile = new PopupWithForm(
+  ".popup_type_edit-profile",
   (userData) => {
     userInfo.setUserInfo(userData);
   }
@@ -103,17 +100,17 @@ const popupWithFormEditProfile = new PopupWithForm(
 
 /** EventListeners */
 
-popupCardImage.setEventListeners();
-popupWithFormEditProfile.setEventListeners();
-popupWithFormAddPlace.setEventListeners();
+popupImage.setEventListeners();
+popupEditProfile.setEventListeners();
+popupAddPlace.setEventListeners();
 
 buttonEditProfile.addEventListener("click", () => {
   formEditProfileValidator.resetValidation();
-  popupWithFormEditProfile.open();
+  popupEditProfile.open();
   getUserData();
 });
 
 buttonAddPlace.addEventListener("click", () => {
   formAddPlaceValidator.resetValidation();
-  popupWithFormAddPlace.open();
+  popupAddPlace.open();
 });
