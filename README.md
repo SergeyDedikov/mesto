@@ -1,4 +1,4 @@
-# Практическая работа №7: Место
+# Практическая работа №8: Место
 
 - Описание
 - Особенности
@@ -8,66 +8,84 @@
 
 **Описание**
 
-Практическая работа №7 курса "Веб-разработчик" Яндекс.Практикума — продолжение разработки проекта **"Место"**, c дальнейшим изучением языка программирования **JavaScript**.
+Практическая работа №8 курса "Веб-разработчик" Яндекс.Практикума — продолжение разработки проекта **"Место"**, c дальнейшим изучением классов в языке программирования **JavaScript**.
+
+В этой работе создали новые классы:
+- для каждого попапа;
+- для блока с информацией о пользователе;
+- класс-слой для взаимодействия других классов.
 
 ---
 
 **Особенности**
 
-В этой работе перед студентами поставлена задача: провести рефакторинг кода для блока создания карточек мест и блока валидации форм посредством реализации классов JS и разделения кода на отдельные модули.
-
-Класс Card в отдельном модуле Card.js принимает импортированные параметры и содержит конструктор и методы для создания элемента карточек:
+Класс Card претерпел изменения: теперь обработчик клика по изображению для вызова превью передаёт объект в глобальную область, тем самым, избавились от импорта в класс необходимых для этого переменных.
 
 ```javascript
-import {
-  popupCard,
-  cardImagePopup,
-  cardImagePopupDescript
-} from "./consts.js";
-
-import { openPopup } from "./utils.js";
-
-export class Card {
-  constructor(data, selector) {
-    this._name = data.name;
-    this._link = data.link;
-    this._selector = selector;
-  }
-  ...
+_openPopup = () => {
+    this._handleCardClick({
+      //передадим объект во внешнюю функцию
+      text: this._name,
+      link: this._link,
+    });
+  };
 ```
 
-Затем в index.js отрисовываются на страницу :
+Теперь карточки отрисовываются на страницу посредством класса Section:
 
 ```javascript
-initCards.forEach((item) => {
-  const card = new Card(item, "#card-template");
-  cardsContainer.append(card.generateCard());
-});
+const cardList = new Section(
+  {
+    items: initCards,
+    renderer: (cardItem) => {
+      cardList.addItem(renderCard(cardItem));
+    },
+  },
+  cardsContainer
+);
+
+cardList.renderItems();
 ```
 
-Подобным образом реализована работа класса FormValidator для валидации форм:
+Более хитроумно получаем информацию о пользователе со страницы и отображаем в полях ввода данных в соответсвующей форме при открытии последней:
 
 ```javascript
-export class FormValidator {
-  constructor(validConfig, formElement) {
-    this._formElement = formElement;
-    this._inputSelector = validConfig.inputSelector;
-    this._submitButtonSelector = validConfig.submitButtonSelector;
-    this._inactiveButtonClass = validConfig.inactiveButtonClass;
-    ...
-    enableValidation() {
-    this._setEventListeners();
+const userInfo = new UserInfo({ nameProfile, jobProfile });
+
+function getUserData() {
+  //обработчик данных о пользователе
+  const data = userInfo.getUserInfo(); //получаем объект с данными
+  for (let input in data) {
+    // переберём значения в объекте
+    const formUser = document.forms.editProfile; //определим форму
+    formUser.elements[input].value = data[input]; //заменим значения полей ввода
   }
 }
 ```
 
+И самое важное изменение в проекте — **инициализация npm и настройка Webpack.**
+Теперь происходит сборка и минимизация кода в три файла HTML, CSS и JS c необходимыми изображениами в одной директории.
+
 ```javascript
-const formAddPlaceValidator = new FormValidator(validConfig, formAddPlace);
-formAddPlaceValidator.enableValidation();
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "sprint8",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "author": "Serega Dedikov",
+  "license": "YNDX",
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    ...
 ```
 
 ---
 
 **Ссылка на работу**
 
-Посмотреть реализацию проекта **"Место"** можно [по ссылке](https://sergeydedikov.github.io/mesto/index.html)
+Посмотреть реализацию проекта **"Место"** можно [по ссылке](https://sergeydedikov.github.io/mestoWebpack/index.html)
