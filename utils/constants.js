@@ -28,13 +28,8 @@ const initCards = [
   },
 ];
 
-/** PopupCard Constants */
-
-//const popupCard = document.querySelector(".popup_type_card");
-
 /** Edit Profile Constants */
 
-//const popupEditProfile = document.querySelector(".popup_type_edit-profile");
 const buttonEditProfile = document.querySelector(".profile__button_type_edit");
 const formEditProfile = document.querySelector(".popup__form_edit-profile");
 const nameProfile = document.querySelector(".profile__name");
@@ -42,7 +37,6 @@ const jobProfile = document.querySelector(".profile__job");
 
 /** Add Place Constants */
 
-//const popupAddPlace = document.querySelector(".popup_type_add-place");
 const buttonAddPlace = document.querySelector(".profile__button_type_add");
 const formAddPlace = document.querySelector(".popup__form_add-place");
 
