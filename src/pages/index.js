@@ -45,18 +45,14 @@ function createCard(data) {
     },
     "#card-template"
   );
-  return card;
-}
-
-function renderCard(data) {
-  return createCard(data).generateCard();
+  return card.generateCard();
 }
 
 const cardList = new Section(
   {
     items: initCards,
     renderer: (cardItem) => {
-      cardList.addItem(renderCard(cardItem));
+      cardList.addItem(createCard(cardItem));
     },
   },
   cardsContainer
@@ -73,7 +69,7 @@ const popupAddPlace = new PopupWithForm(
       name: place,
       link: link,
     };
-    cardsContainer.prepend(renderCard(data));
+    cardsContainer.prepend(createCard(data));
   }
 );
 
