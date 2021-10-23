@@ -86,6 +86,7 @@ const popupAddPlace = new PopupWithForm(
       link: link,
     };
     cardsContainer.prepend(createCard(data));
+    api.addNewCard(data);
   }
 );
 
