@@ -86,4 +86,4 @@ function getUserData() {                           //обработчик дан
 
 **Ссылка на работу**
 
-Посмотреть реализацию проекта **"Место"** можно [по ссылке](https://sergeydedikov.github.io/mestoWebpack/index.html)
+Посмотреть реализацию проекта **"Место"** можно [по ссылке](https://sergeydedikov.github.io/mesto/index.html)
