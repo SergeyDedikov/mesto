@@ -9,29 +9,25 @@ export default class Api {
     };
   }
 
+  _checkResult = (res) => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject(`Ошибка: ${res.status}`);
+    }
+  };
+
   getInitialCards() {
     return fetch(`${this._apiUrl}/v1/${this._cohortId}/cards`, {
       method: "GET",
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    });
+    }).then(this._checkResult);
   }
 
   getUserInfo() {
     return fetch(`${this._apiUrl}/v1/${this._cohortId}/users/me`, {
       method: "GET",
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    });
+    }).then(this._checkResult);
   }
 }
