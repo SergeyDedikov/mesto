@@ -43,8 +43,6 @@ formAddPlaceValidator.enableValidation();
 
 /** Cards Functions */
 
-//api.getInitialCards();
-
 const popupImage = new PopupWithImage(".popup_type_card");
 
 function createCard(data) {
@@ -58,17 +56,24 @@ function createCard(data) {
   return card.generateCard();
 }
 
-const cardList = new Section(
-  {
-    items: initCards,
-    renderer: (cardItem) => {
-      cardList.addItem(createCard(cardItem));
-    },
-  },
-  cardsContainer
-);
+api
+  .getInitialCards()
+  .then((cards) => {
+    const cardList = new Section(
+      {
+        items: cards,
+        renderer: (cardItem) => {
+          cardList.addItem(createCard(cardItem));
+        },
+      },
+      cardsContainer
+    );
 
-cardList.renderItems();
+    cardList.renderItems();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 /** Form AddPlace */
 
@@ -91,7 +96,8 @@ const apiUserInfo = api.getUserInfo();
 
 apiUserInfo
   .then((info) => {
-    userInfo.setUserInfo({ //установим данные о пользователе
+    userInfo.setUserInfo({
+      //установим данные о пользователе
       name: info.name,
       job: info.about,
     });
