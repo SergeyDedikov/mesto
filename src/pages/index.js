@@ -59,6 +59,7 @@ function createCard(data) {
 api
   .getInitialCards()
   .then((cards) => {
+    console.log(cards);
     const cardList = new Section(
       {
         items: cards,
@@ -97,7 +98,7 @@ const apiUserInfo = api.getUserInfo();
 apiUserInfo
   .then((info) => {
     userInfo.setUserInfo({
-      //установим данные о пользователе
+      //получим данные пользователя от сервера
       name: info.name,
       job: info.about,
     });
@@ -106,6 +107,14 @@ apiUserInfo
   .catch((err) => {
     console.log(err);
   });
+
+const popupEditProfile = new PopupWithForm(
+  ".popup_type_edit-profile",
+  (userData) => {
+    userInfo.setUserInfo(userData);
+    api.setUserInfo(userData);
+  }
+);
 
 function getUserData() {
   //обработчик данных о пользователе
@@ -116,13 +125,6 @@ function getUserData() {
     formUser.elements[input].value = data[input]; //заменим значения полей ввода в форме
   }
 }
-
-const popupEditProfile = new PopupWithForm(
-  ".popup_type_edit-profile",
-  (userData) => {
-    userInfo.setUserInfo(userData);
-  }
-);
 
 /** EventListeners */
 

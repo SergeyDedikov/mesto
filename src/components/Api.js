@@ -30,4 +30,15 @@ export default class Api {
       headers: this._headers,
     }).then(this._checkResult);
   }
+
+  setUserInfo(userData) {
+    return fetch(`${this._apiUrl}/v1/${this._cohortId}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: userData.name,
+        about: userData.job,
+      }),
+    }).then(this._checkResult);
+  }
 }
