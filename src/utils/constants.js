@@ -49,6 +49,14 @@ const validConfig = {
   errorClass: "popup__error_visible",
 };
 
+//* API config */
+
+const apiConfig = {
+  apiUrl: 'https://mesto.nomoreparties.co',
+  cohortId: 'cohort-29',
+  tokenId: 'aac8a826-6020-4164-947b-69b028e1e5c6'
+};
+
 //* --- */
 
 export {
@@ -59,4 +67,5 @@ export {
   buttonAddPlace,
   formAddPlace,
   validConfig,
+  apiConfig
 };
