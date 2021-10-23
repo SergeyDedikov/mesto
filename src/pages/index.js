@@ -3,6 +3,7 @@ import "./index.css";
 import {
   cardsContainer,
   initCards,
+  avatarUser,
   buttonEditProfile,
   formEditProfile,
   buttonAddPlace,
@@ -89,11 +90,12 @@ const userInfo = new UserInfo(".profile__name", ".profile__job");
 const apiUserInfo = api.getUserInfo();
 
 apiUserInfo
-  .then((res) => {
+  .then((info) => {
     userInfo.setUserInfo({ //установим данные о пользователе
-      name: res.name,
-      job: res.about,
+      name: info.name,
+      job: info.about,
     });
+    avatarUser.src = info.avatar;
   })
   .catch((err) => {
     console.log(err);

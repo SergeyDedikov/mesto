@@ -32,6 +32,7 @@ const initCards = [
 
 const buttonEditProfile = document.querySelector(".profile__button_type_edit");
 const formEditProfile = document.querySelector(".popup__form_edit-profile");
+const avatarUser = document.querySelector(".profile__avatar");
 
 /** Add Place Constants */
 
@@ -62,6 +63,7 @@ const apiConfig = {
 export {
   cardsContainer,
   initCards,
+  avatarUser,
   buttonEditProfile,
   formEditProfile,
   buttonAddPlace,
