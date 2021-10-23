@@ -90,7 +90,7 @@ const apiUserInfo = api.getUserInfo();
 
 apiUserInfo
   .then((res) => {
-    userInfo.setUserInfo({
+    userInfo.setUserInfo({ //установим данные о пользователе
       name: res.name,
       job: res.about,
     });
