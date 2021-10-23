@@ -3,10 +3,6 @@ export default class Api {
     this._apiUrl = config.apiUrl;
     this._cohortId = config.cohortId;
     this._tokenId = config.tokenId;
-    this._headers = {
-      authorization: this._tokenId,
-      "Content-Type": "application/json",
-    };
   }
 
   _checkResult = (res) => {
@@ -20,21 +16,24 @@ export default class Api {
   getInitialCards() {
     return fetch(`${this._apiUrl}/v1/${this._cohortId}/cards`, {
       method: "GET",
-      headers: this._headers,
+      headers: { authorization: this._tokenId },
     }).then(this._checkResult);
   }
 
   getUserInfo() {
     return fetch(`${this._apiUrl}/v1/${this._cohortId}/users/me`, {
       method: "GET",
-      headers: this._headers,
+      headers: { authorization: this._tokenId },
     }).then(this._checkResult);
   }
 
   setUserInfo(userData) {
     return fetch(`${this._apiUrl}/v1/${this._cohortId}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        authorization: this._tokenId,
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         name: userData.name,
         about: userData.job,
