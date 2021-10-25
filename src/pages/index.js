@@ -39,13 +39,14 @@ formAddPlaceValidator.enableValidation();
 /** Cards Functions */
 
 const popupImage = new PopupWithImage(".popup_type_card");
-const popupCardDelete = new PopupWithConfirmation('.popup_type_confirmation');
+const popupConfirmation = new PopupWithConfirmation('.popup_type_confirmation');
 
 function createCard(data) {
   const card = new Card(
     {
       data,
       handleCardClick: popupImage.open.bind(popupImage),
+      handleDeleteIconClick: popupConfirmation.open.bind(popupConfirmation)
     },
     "#card-template"
   );
@@ -132,13 +133,12 @@ function getUserData() {
 popupImage.setEventListeners();
 popupEditProfile.setEventListeners();
 popupAddPlace.setEventListeners();
-popupCardDelete.setEventListeners();
+popupConfirmation.setEventListeners();
 
 buttonEditProfile.addEventListener("click", () => {
-  popupCardDelete.open();
-  //formEditProfileValidator.resetValidation();
-  //popupEditProfile.open();
-  //getUserData();
+  formEditProfileValidator.resetValidation();
+  popupEditProfile.open();
+  getUserData();
 });
 
 buttonAddPlace.addEventListener("click", () => {

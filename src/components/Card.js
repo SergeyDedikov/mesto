@@ -1,10 +1,11 @@
 export default class Card {
-  constructor({ data, handleCardClick }, selector) {
+  constructor({ data, handleCardClick, handleDeleteIconClick }, selector) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
     this._selector = selector;
     this._handleCardClick = handleCardClick;
+    this._handleDeleteIconClick = handleDeleteIconClick;
   }
 
   _getElement() {
@@ -37,7 +38,9 @@ export default class Card {
 
   _likeCard = (evt) => evt.target.classList.toggle("card__button-like_active");
 
-  _removeCardHandler = () => this._element.remove();
+  _removeCardHandler = () => {
+    this._handleDeleteIconClick(this._element.remove());
+  };
 
   generateCard() {
     this._element = this._getElement();
