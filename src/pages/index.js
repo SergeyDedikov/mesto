@@ -36,6 +36,45 @@ formEditProfileValidator.enableValidation();
 const formAddPlaceValidator = new FormValidator(validConfig, formAddPlace);
 formAddPlaceValidator.enableValidation();
 
+/** UserProfile && Form */
+
+const userInfo = new UserInfo(".profile__name", ".profile__job");
+
+const apiUserInfo = api.getUserInfo();
+
+apiUserInfo
+  .then((info) => {
+    userInfo.setUserInfo({
+      //получим данные пользователя от сервера
+      name: info.name,
+      job: info.about,
+    });
+    avatarUser.src = info.avatar;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+const popupEditProfile = new PopupWithForm(
+  ".popup_type_edit-profile",
+  (userData) => {
+    userInfo.setUserInfo(userData);
+    api.setUserInfo(userData).catch((err) => {
+      console.log(err);
+    });
+  }
+);
+
+function getUserData() {
+  //обработчик данных о пользователе
+  const data = userInfo.getUserInfo(); //получаем объект с данными
+  const formUser = document.forms.editProfile; //определим форму
+  for (let input in data) {
+    // переберём ключи в объекте
+    formUser.elements[input].value = data[input]; //заменим значения полей ввода в форме
+  }
+}
+
 /** Cards Functions */
 
 const popupImage = new PopupWithImage(".popup_type_card");
@@ -48,7 +87,7 @@ function createCard(data) {
       handleCardClick: popupImage.open.bind(popupImage),
       handleDeleteIconClick: (el) => {
         popupConfirmation.open();
-        popupConfirmation.exec(el.remove());
+        popupConfirmation.exec(() => el.remove());
       }
     },
     "#card-template"
@@ -92,44 +131,6 @@ const popupAddPlace = new PopupWithForm(
   }
 );
 
-/** UserProfile && Form */
-
-const userInfo = new UserInfo(".profile__name", ".profile__job");
-
-const apiUserInfo = api.getUserInfo();
-
-apiUserInfo
-  .then((info) => {
-    userInfo.setUserInfo({
-      //получим данные пользователя от сервера
-      name: info.name,
-      job: info.about,
-    });
-    avatarUser.src = info.avatar;
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-const popupEditProfile = new PopupWithForm(
-  ".popup_type_edit-profile",
-  (userData) => {
-    userInfo.setUserInfo(userData);
-    api.setUserInfo(userData).catch((err) => {
-      console.log(err);
-    });
-  }
-);
-
-function getUserData() {
-  //обработчик данных о пользователе
-  const data = userInfo.getUserInfo(); //получаем объект с данными
-  const formUser = document.forms.editProfile; //определим форму
-  for (let input in data) {
-    // переберём ключи в объекте
-    formUser.elements[input].value = data[input]; //заменим значения полей ввода в форме
-  }
-}
 
 /** EventListeners */
 
