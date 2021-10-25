@@ -4,6 +4,7 @@ export default class Card {
     this._link = data.link;
     this._likes = data.likes;
     this._selector = selector;
+    this._cardOwnerId = data.owner._id;
     this._handleCardClick = handleCardClick;
     this._handleDeleteIconClick = handleDeleteIconClick;
   }
@@ -53,10 +54,16 @@ export default class Card {
     this._element.querySelector(".card__description").textContent = this._name;
 
     // счётчик лайков
-    if (this._likes !== undefined) {
+
       const countLikes = this._element.querySelector(".card__likes-count");
       countLikes.textContent = this._likes.length;
-    }
+
+
+    // иконка удаления
+
+    console.log(this._cardOwnerId);
+
+
     // Вернём элемент наружу
     return this._element;
   }

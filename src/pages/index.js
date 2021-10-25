@@ -78,7 +78,7 @@ function getUserData() {
 /** Cards Functions */
 
 const popupImage = new PopupWithImage(".popup_type_card");
-const popupConfirmation = new PopupWithConfirmation('.popup_type_confirmation');
+const popupConfirmation = new PopupWithConfirmation(".popup_type_confirmation");
 
 function createCard(data) {
   const card = new Card(
@@ -88,7 +88,7 @@ function createCard(data) {
       handleDeleteIconClick: (el) => {
         popupConfirmation.open();
         popupConfirmation.exec(() => el.remove());
-      }
+      },
     },
     "#card-template"
   );
@@ -98,7 +98,6 @@ function createCard(data) {
 api
   .getInitialCards()
   .then((cards) => {
-    console.log(cards);
     const cardList = new Section(
       {
         items: cards,
@@ -124,13 +123,17 @@ const popupAddPlace = new PopupWithForm(
       name: place,
       link: link,
     };
-    cardsContainer.prepend(createCard(data));
-    api.addNewCard(data).catch((err) => {
-      console.log(err);
-    });
+    api
+      .addNewCard(data)
+      .then((res) => {
+        console.log(res.owner._id);
+        cardsContainer.prepend(createCard(res));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 );
-
 
 /** EventListeners */
 
