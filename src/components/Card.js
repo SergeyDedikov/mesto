@@ -41,7 +41,6 @@ export default class Card {
 
   _removeCardHandler = () => {
     this._handleDeleteIconClick(this._element);
-    //this._element.remove()
   };
 
   generateCard() {
@@ -54,15 +53,14 @@ export default class Card {
     this._element.querySelector(".card__description").textContent = this._name;
 
     // счётчик лайков
-
-      const countLikes = this._element.querySelector(".card__likes-count");
-      countLikes.textContent = this._likes.length;
-
+    const countLikes = this._element.querySelector(".card__likes-count");
+    countLikes.textContent = this._likes.length;
 
     // иконка удаления
-
-    console.log(this._cardOwnerId);
-
+    if (this._cardOwnerId !== "6c4e7c68396210e48577d2c5") {
+      this._element
+        .querySelector(".card__button-remove").remove();
+    }
 
     // Вернём элемент наружу
     return this._element;
