@@ -58,10 +58,14 @@ apiUserInfo
 const popupEditProfile = new PopupWithForm(
   ".popup_type_edit-profile",
   (userData) => {
-    userInfo.setUserInfo(userData);
-    api.setUserInfo(userData).catch((err) => {
-      console.log(err);
-    });
+    api
+      .setUserInfo(userData)
+      .then(() => {
+        userInfo.setUserInfo(userData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 );
 
