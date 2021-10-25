@@ -3,6 +3,7 @@ export default class Card {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
+    //this._cardId = data._id;
     this._selector = selector;
     this._cardOwnerId = data.owner._id;
     this._handleCardClick = handleCardClick;

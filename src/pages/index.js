@@ -85,9 +85,18 @@ function createCard(data) {
     {
       data,
       handleCardClick: popupImage.open.bind(popupImage),
-      handleDeleteIconClick: (el) => {
+      handleDeleteIconClick: (card) => {
         popupConfirmation.open();
-        popupConfirmation.exec(() => el.remove());
+        popupConfirmation.exec(() =>
+          api
+            .deleteCard(data)
+            .then(() => {
+              card.remove();
+            })
+            .catch((err) => {
+              console.log(err);
+            })
+        );
       },
     },
     "#card-template"
@@ -126,7 +135,6 @@ const popupAddPlace = new PopupWithForm(
     api
       .addNewCard(data)
       .then((res) => {
-        console.log(res.owner._id);
         cardsContainer.prepend(createCard(res));
       })
       .catch((err) => {
