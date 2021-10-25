@@ -13,17 +13,12 @@ import {
 } from "../utils/constants.js";
 
 import FormValidator from "../components/FormValidator.js";
-
 import UserInfo from "../components/UserInfo.js";
-
 import Card from "../components/Card.js";
-
 import Section from "../components/Section.js";
-
 import PopupWithForm from "../components/PopupWithForm.js";
-
 import PopupWithImage from "../components/PopupWithImage.js";
-
+import PopupWithConfirmation from "../components/PopupWithConfirmation";
 import Api from "../components/Api";
 
 /** API */
@@ -44,6 +39,7 @@ formAddPlaceValidator.enableValidation();
 /** Cards Functions */
 
 const popupImage = new PopupWithImage(".popup_type_card");
+const popupCardDelete = new PopupWithConfirmation('.popup_type_confirmation');
 
 function createCard(data) {
   const card = new Card(
@@ -136,11 +132,13 @@ function getUserData() {
 popupImage.setEventListeners();
 popupEditProfile.setEventListeners();
 popupAddPlace.setEventListeners();
+popupCardDelete.setEventListeners();
 
 buttonEditProfile.addEventListener("click", () => {
-  formEditProfileValidator.resetValidation();
-  popupEditProfile.open();
-  getUserData();
+  popupCardDelete.open();
+  //formEditProfileValidator.resetValidation();
+  //popupEditProfile.open();
+  //getUserData();
 });
 
 buttonAddPlace.addEventListener("click", () => {
