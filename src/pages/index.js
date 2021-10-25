@@ -86,7 +86,9 @@ const popupAddPlace = new PopupWithForm(
       link: link,
     };
     cardsContainer.prepend(createCard(data));
-    api.addNewCard(data);
+    api.addNewCard(data).catch((err) => {
+      console.log(err);
+    });
   }
 );
 
@@ -113,7 +115,9 @@ const popupEditProfile = new PopupWithForm(
   ".popup_type_edit-profile",
   (userData) => {
     userInfo.setUserInfo(userData);
-    api.setUserInfo(userData);
+    api.setUserInfo(userData).catch((err) => {
+      console.log(err);
+    });
   }
 );
 

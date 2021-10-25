@@ -48,6 +48,12 @@ export default class Card {
     cardImage.alt = "На фотографии: " + this._name;
     this._element.querySelector(".card__description").textContent = this._name;
 
+    // счётчик лайков
+    if (this._likes !== undefined) {
+      const countLikes = this._element.querySelector(".card__likes-count");
+      countLikes.textContent = this._likes.length;
+    }
+
     // Вернём элемент наружу
     return this._element;
   }
