@@ -46,7 +46,10 @@ function createCard(data) {
     {
       data,
       handleCardClick: popupImage.open.bind(popupImage),
-      handleDeleteIconClick: popupConfirmation.open.bind(popupConfirmation)
+      handleDeleteIconClick: (el) => {
+        popupConfirmation.open();
+        popupConfirmation.exec(el.remove());
+      }
     },
     "#card-template"
   );

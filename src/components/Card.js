@@ -39,7 +39,8 @@ export default class Card {
   _likeCard = (evt) => evt.target.classList.toggle("card__button-like_active");
 
   _removeCardHandler = () => {
-    this._handleDeleteIconClick(this._element.remove());
+    this._handleDeleteIconClick(this._element);
+    //this._element.remove()
   };
 
   generateCard() {
@@ -56,7 +57,6 @@ export default class Card {
       const countLikes = this._element.querySelector(".card__likes-count");
       countLikes.textContent = this._likes.length;
     }
-
     // Вернём элемент наружу
     return this._element;
   }
