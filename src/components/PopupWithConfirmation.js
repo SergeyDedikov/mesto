@@ -6,13 +6,15 @@ export default class PopupWithConfirmation extends Popup {
     this._form = this._popup.querySelector(".popup__form");
   }
 
+someFunction = (func) => {return func};
+
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
 
-      alert("Выполнено!");
-      //setTimeout(this.close(), 5000);
+      this.someFunction();
+      this.close();
     });
   }
 }
