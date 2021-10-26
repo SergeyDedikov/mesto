@@ -194,8 +194,9 @@ buttonAddPlace.addEventListener("click", () => {
   popupAddPlace.open();
 });
 
-/* buttonEditAvatar.addEventListener("click", () => {
-  formEditAvatar.resetValidation();
-  popupEditAvatar.open();
+buttonEditAvatar.addEventListener("click", () => {
+  alert('меня нажали!');
+  //formEditAvatar.resetValidation();
+  //popupEditAvatar.open();
 });
- */
+
