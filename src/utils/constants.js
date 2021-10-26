@@ -30,9 +30,9 @@ const validConfig = {
 //* API config */
 
 const apiConfig = {
-  apiUrl: 'https://mesto.nomoreparties.co',
-  cohortId: 'cohort-29',
-  tokenId: 'aac8a826-6020-4164-947b-69b028e1e5c6'
+  apiUrl: "https://mesto.nomoreparties.co",
+  cohortId: "cohort-29",
+  tokenId: "aac8a826-6020-4164-947b-69b028e1e5c6",
 };
 
 //* --- */
