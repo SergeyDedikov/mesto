@@ -103,6 +103,9 @@ function createCard(data) {
             })
         );
       },
+      handleLikeClick: (btnLike) => {
+        btnLike.classList.toggle("card__button-like_active");
+      }
     },
     "#card-template",
     myId
@@ -122,7 +125,6 @@ api
       },
       cardsContainer
     );
-
     cardList.renderItems();
   })
   .catch((err) => {

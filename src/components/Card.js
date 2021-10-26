@@ -1,5 +1,9 @@
 export default class Card {
-  constructor({ data, handleCardClick, handleDeleteIconClick }, selector, myId) {
+  constructor(
+    { data, handleCardClick, handleDeleteIconClick, handleLikeClick },
+    selector,
+    myId
+  ) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
@@ -9,6 +13,9 @@ export default class Card {
     this._cardOwnerId = data.owner._id;
     this._handleCardClick = handleCardClick;
     this._handleDeleteIconClick = handleDeleteIconClick;
+    this._handleLikeClick = handleLikeClick;
+    //this._buttonLike =
+    //this._buttonRemove =
   }
 
   _getElement() {
@@ -39,7 +46,9 @@ export default class Card {
     });
   };
 
-  _likeCard = (evt) => evt.target.classList.toggle("card__button-like_active");
+  _likeCard = (evt) => {
+    this._handleLikeClick(evt.target);
+  };
 
   _removeCardHandler = () => {
     this._handleDeleteIconClick(this._element);
@@ -58,10 +67,19 @@ export default class Card {
     const countLikes = this._element.querySelector(".card__likes-count");
     countLikes.textContent = this._likes.length;
 
-    // иконка удаления удалится, если myId не мой "6c4e7c68396210e48577d2c5"
+    //проверим массив лайков на наличие нашего
+    this._likes.forEach((item) => {
+      //если наш id в списке, то меняем кнопку
+      if (item._id === this._myId) {
+        this._element
+          .querySelector(".card__button-like")
+          .classList.add("card__button-like_active");
+      }
+    });
+
+    // иконка удаления удалится, если myId не мой
     if (this._cardOwnerId !== this._myId) {
-      this._element
-        .querySelector(".card__button-remove").remove();
+      this._element.querySelector(".card__button-remove").remove();
     }
 
     // Вернём элемент наружу
