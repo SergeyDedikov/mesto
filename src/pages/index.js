@@ -104,7 +104,13 @@ function createCard(data) {
         );
       },
       handleLikeClick: (btnLike) => {
-        btnLike.classList.toggle("card__button-like_active");
+        if (btnLike.classList.contains("card__button-like_active")) {
+          // тут логика АПИ, а в ней то что ниже
+          btnLike.classList.remove("card__button-like_active");
+
+        } else {
+          btnLike.classList.add("card__button-like_active");
+        }
       }
     },
     "#card-template",
