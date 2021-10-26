@@ -104,7 +104,8 @@ function createCard(data) {
         );
       },
     },
-    "#card-template"
+    "#card-template",
+    myId
   );
   return card.generateCard();
 }

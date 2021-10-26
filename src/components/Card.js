@@ -1,10 +1,11 @@
 export default class Card {
-  constructor({ data, handleCardClick, handleDeleteIconClick }, selector) {
+  constructor({ data, handleCardClick, handleDeleteIconClick }, selector, myId) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
     //this._cardId = data._id;
     this._selector = selector;
+    this._myId = myId.id;
     this._cardOwnerId = data.owner._id;
     this._handleCardClick = handleCardClick;
     this._handleDeleteIconClick = handleDeleteIconClick;
@@ -57,8 +58,8 @@ export default class Card {
     const countLikes = this._element.querySelector(".card__likes-count");
     countLikes.textContent = this._likes.length;
 
-    // иконка удаления
-    if (this._cardOwnerId !== "6c4e7c68396210e48577d2c5") {
+    // иконка удаления удалится, если myId не мой "6c4e7c68396210e48577d2c5"
+    if (this._cardOwnerId !== this._myId) {
       this._element
         .querySelector(".card__button-remove").remove();
     }
