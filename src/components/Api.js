@@ -27,7 +27,7 @@ export default class Api {
     }).then(this._checkResult);
   }
 
-  changeAvatar(link) {
+  changeAvatar(cardData) {
     return fetch(`${this._apiUrl}/v1/${this._cohortId}/users/me/avatar`, {
       method: "PATCH",
       headers: {
@@ -35,7 +35,7 @@ export default class Api {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        avatar: link,
+        avatar: cardData.avatar,
       }),
     }).then(this._checkResult);
   }

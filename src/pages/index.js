@@ -6,8 +6,9 @@ import {
   myId,
   buttonEditAvatar,
   buttonEditProfile,
-  formEditProfile,
   buttonAddPlace,
+  formEditProfile,
+  formEditAvatar,
   formAddPlace,
   validConfig,
   apiConfig,
@@ -36,6 +37,9 @@ formEditProfileValidator.enableValidation();
 
 const formAddPlaceValidator = new FormValidator(validConfig, formAddPlace);
 formAddPlaceValidator.enableValidation();
+
+const formEditAvatarValidator = new FormValidator(validConfig, formEditAvatar);
+formEditAvatarValidator.enableValidation();
 
 /** UserProfile && Form */
 
@@ -175,11 +179,28 @@ const popupAddPlace = new PopupWithForm(
   }
 );
 
+/** Form Edit Avatar */
+
+const popupEditAvatar = new PopupWithForm(
+  ".popup_type_edit-avatar",
+  ({ avatar }) => {
+    const data = { avatar: avatar };
+    api
+      .changeAvatar(data)
+      .then((res) => {
+        avatarUser.src = res.avatar;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+);
+
 /** EventListeners */
 
 popupImage.setEventListeners();
 popupEditProfile.setEventListeners();
-//popupEditAvatar.setEventListeners();
+popupEditAvatar.setEventListeners();
 popupAddPlace.setEventListeners();
 popupConfirmation.setEventListeners();
 
@@ -195,8 +216,7 @@ buttonAddPlace.addEventListener("click", () => {
 });
 
 buttonEditAvatar.addEventListener("click", () => {
-  alert('меня нажали!');
-  //formEditAvatar.resetValidation();
-  //popupEditAvatar.open();
+  formEditAvatarValidator.resetValidation();
+  popupEditAvatar.open();
 });
 
