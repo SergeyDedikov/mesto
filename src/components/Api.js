@@ -27,6 +27,19 @@ export default class Api {
     }).then(this._checkResult);
   }
 
+  changeAvatar(link) {
+    return fetch(`${this._apiUrl}/v1/${this._cohortId}/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._tokenId,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        avatar: link,
+      }),
+    }).then(this._checkResult);
+  }
+
   setUserInfo(userData) {
     return fetch(`${this._apiUrl}/v1/${this._cohortId}/users/me`, {
       method: "PATCH",
