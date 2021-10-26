@@ -61,7 +61,7 @@ apiUserInfo
     console.log(err);
   });
 
-  const popupEditProfile = new PopupWithForm(
+const popupEditProfile = new PopupWithForm(
   ".popup_type_edit-profile",
   (userData) => {
     api
@@ -110,30 +110,31 @@ function createCard(data) {
       },
       handleLikeClick: (btnLike) => {
         if (btnLike.classList.contains("card__button-like_active")) {
-          api.deleteLike(data).then((card) => {
-            // обновляем счётчик
-            console.log(card.likes.length);
+          api
+            .deleteLike(data)
+            .then((card) => {
+              // обновляем счётчик
+              console.log(card.likes.length);
 
-            btnLike.classList.remove("card__button-like_active");
-
-          }).catch((err) => {
-            console.log(err);
-          })
-
-
+              btnLike.classList.remove("card__button-like_active");
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         } else {
-          api.addLike(data).then((card) => {
-            // обновляем счётчик
-            console.log(card.likes.length);
+          api
+            .addLike(data)
+            .then((card) => {
+              // обновляем счётчик
+              console.log(card.likes.length);
 
-            btnLike.classList.add("card__button-like_active");
-
-          }).catch((err) => {
-            console.log(err);
-          })
-
+              btnLike.classList.add("card__button-like_active");
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
-      }
+      },
     },
     "#card-template",
     myId
@@ -219,4 +220,3 @@ buttonEditAvatar.addEventListener("click", () => {
   formEditAvatarValidator.resetValidation();
   popupEditAvatar.open();
 });
-
