@@ -72,6 +72,7 @@ const popupEditProfile = new PopupWithForm(
       .catch((err) => {
         console.log(err);
       });
+      // приделать finally c чем-то
   }
 );
 
