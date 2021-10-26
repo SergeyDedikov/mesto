@@ -5,6 +5,7 @@ const cardsContainer = document.querySelector(".cards__list");
 /** Edit Profile Constants */
 
 const buttonEditProfile = document.querySelector(".profile__button_type_edit");
+const buttonEditAvatar = document.querySelector(".profile__button_type_avatar");
 const formEditProfile = document.querySelector(".popup__form_edit-profile");
 const avatarUser = document.querySelector(".profile__avatar");
 const myId = {};
@@ -39,10 +40,11 @@ export {
   cardsContainer,
   avatarUser,
   myId,
+  buttonEditAvatar,
   buttonEditProfile,
   formEditProfile,
   buttonAddPlace,
   formAddPlace,
   validConfig,
-  apiConfig
+  apiConfig,
 };

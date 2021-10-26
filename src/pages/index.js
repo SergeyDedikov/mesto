@@ -4,6 +4,7 @@ import {
   cardsContainer,
   avatarUser,
   myId,
+  buttonEditAvatar,
   buttonEditProfile,
   formEditProfile,
   buttonAddPlace,
@@ -178,6 +179,7 @@ const popupAddPlace = new PopupWithForm(
 
 popupImage.setEventListeners();
 popupEditProfile.setEventListeners();
+//popupEditAvatar.setEventListeners();
 popupAddPlace.setEventListeners();
 popupConfirmation.setEventListeners();
 
@@ -191,3 +193,9 @@ buttonAddPlace.addEventListener("click", () => {
   formAddPlaceValidator.resetValidation();
   popupAddPlace.open();
 });
+
+/* buttonEditAvatar.addEventListener("click", () => {
+  formEditAvatar.resetValidation();
+  popupEditAvatar.open();
+});
+ */
