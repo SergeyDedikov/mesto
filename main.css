@@ -34,9 +34,11 @@
 .cards__list{-moz-column-gap:17px;column-gap:17px;display:grid;grid-template-columns:repeat(3,1fr);list-style:none;margin:0;padding:0;row-gap:20px;width:100%}@media screen and (max-width:900px){.cards__list{grid-template-columns:repeat(2,1fr)}}@media screen and (max-width:400px){.cards__list{grid-template-columns:1fr}}
 .card{background:#fff;border-radius:10px;margin:0;overflow:hidden;position:relative;width:inherit}
 .card__photo{height:282px;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;width:100%}.card__photo:hover{cursor:pointer}
-.card__info{align-items:baseline;display:grid;grid-template-columns:calc(100% - 25px) 25px;justify-content:space-between;margin:23px 20px 26px}
+.card__info{align-items:center;display:grid;grid-template-columns:calc(100% - 25px) 25px;justify-content:space-between;margin:23px 20px 26px}
 .card__description{color:#000;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:90%}
-.card__button-like{background:url(5126b6ad6039c01c21cb.svg) no-repeat;height:19px;justify-self:right;position:relative;width:22px}.card__button-like:hover{opacity:.5}
+.card__likes-box{display:flex;flex-direction:column;justify-content:space-between;justify-self:right}
+.card__button-like{background:url(5126b6ad6039c01c21cb.svg) no-repeat;height:19px;position:relative;width:22px}.card__button-like:hover{opacity:.5}
+.card__likes-count{color:#000;font-size:13px;font-style:normal;font-weight:400;line-height:16px;margin:0;text-align:center}
 .card__button-like_active{background-image:url(85acacd76c10d46dcc97.svg)}
 .card__button-remove{background:url(e3c42771bff3aaa52f76.svg) no-repeat 50%;height:19.3px;position:absolute;right:15px;top:18px;width:18px}
 .footer{margin:0 auto;padding:66px 0 60px;width:calc(100% - 400px)}@media screen and (max-width:1100px){.footer{width:683px}}@media screen and (max-width:900px){.footer{width:calc(100% - 200px)}}@media screen and (max-width:700px){.footer{width:483px}}@media screen and (max-width:600px){.footer{width:calc(100% - 100px)}}@media screen and (max-width:460px){.footer{padding:48px 0 36px;width:calc(100% - 38px)}}
