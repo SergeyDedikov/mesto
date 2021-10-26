@@ -1,38 +1,13 @@
 /** Cards Constants */
 
 const cardsContainer = document.querySelector(".cards__list");
-const initCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
 
 /** Edit Profile Constants */
 
 const buttonEditProfile = document.querySelector(".profile__button_type_edit");
 const formEditProfile = document.querySelector(".popup__form_edit-profile");
 const avatarUser = document.querySelector(".profile__avatar");
+const myId = {};
 
 /** Add Place Constants */
 
@@ -62,8 +37,8 @@ const apiConfig = {
 
 export {
   cardsContainer,
-  initCards,
   avatarUser,
+  myId,
   buttonEditProfile,
   formEditProfile,
   buttonAddPlace,

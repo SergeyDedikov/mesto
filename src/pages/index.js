@@ -2,8 +2,8 @@ import "./index.css";
 
 import {
   cardsContainer,
-  initCards,
   avatarUser,
+  myId,
   buttonEditProfile,
   formEditProfile,
   buttonAddPlace,
@@ -50,12 +50,13 @@ apiUserInfo
       job: info.about,
     });
     avatarUser.src = info.avatar;
+    myId.id = info._id;
   })
   .catch((err) => {
     console.log(err);
   });
 
-const popupEditProfile = new PopupWithForm(
+  const popupEditProfile = new PopupWithForm(
   ".popup_type_edit-profile",
   (userData) => {
     api
