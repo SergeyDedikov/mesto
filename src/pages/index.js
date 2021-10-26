@@ -105,11 +105,28 @@ function createCard(data) {
       },
       handleLikeClick: (btnLike) => {
         if (btnLike.classList.contains("card__button-like_active")) {
-          // тут логика АПИ, а в ней то что ниже
-          btnLike.classList.remove("card__button-like_active");
+          api.deleteLike(data).then((card) => {
+            // обновляем счётчик
+            console.log(card.likes.length);
+
+            btnLike.classList.remove("card__button-like_active");
+
+          }).catch((err) => {
+            console.log(err);
+          })
+
 
         } else {
-          btnLike.classList.add("card__button-like_active");
+          api.addLike(data).then((card) => {
+            // обновляем счётчик
+            console.log(card.likes.length);
+
+            btnLike.classList.add("card__button-like_active");
+
+          }).catch((err) => {
+            console.log(err);
+          })
+
         }
       }
     },
