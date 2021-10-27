@@ -92,36 +92,12 @@ function createCard(data) {
             })
         );
       },
-      handleLikeClick: (btnLike, cardId, isLiked) => {
-        console.log("До:", isLiked);
-        api.changeLikeCardStatus(cardId, isLiked)
-          .then((res) => {
-            !card.counterLikes(res.likes);
-            if (!card.isLiked()) {
-              btnLike.classList.add("card__button-like_active");
-            } else {
-              btnLike.classList.remove("card__button-like_active");
-            };
-            return res;
-          }).then((res) => {
-
-            return res;
-          }).then((res) => {
-            console.log("После:", !card.isLiked());
-            !card.isLiked();
-          })
-          .catch((err) => {
-            console.log(err);
-          })
-      },
-/*       handleLikeClick: (btnLike) => {
+      handleLikeClick: (btnLike) => {
         if (btnLike.classList.contains("card__button-like_active")) {
           api
-            .deleteLike(data)
-            .then((card) => {
-              // обновляем счётчик
-              console.log(card.likes.length);
-
+            .deleteLike(data._id)
+            .then((res) => {
+              !card.counterLikes(res.likes);
               btnLike.classList.remove("card__button-like_active");
             })
             .catch((err) => {
@@ -129,11 +105,9 @@ function createCard(data) {
             });
         } else {
           api
-            .addLike(data)
-            .then((card) => {
-              // обновляем счётчик
-              console.log(card.likes.length);
-
+            .addLike(data._id)
+            .then((res) => {
+              !card.counterLikes(res.likes);
               btnLike.classList.add("card__button-like_active");
             })
             .catch((err) => {
@@ -141,7 +115,7 @@ function createCard(data) {
             });
         }
       },
- */    },
+    },
     "#card-template",
     myId
   );
