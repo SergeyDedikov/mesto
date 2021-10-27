@@ -22,6 +22,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation";
 import Api from "../components/Api";
+import renderLoading from "../utils/renderLoading.js";
 
 /** API */
 
@@ -65,7 +66,7 @@ function getUserData() {                          //обработчик дан�
   const data = userInfo.getUserInfo();            //получаем объект с данными
   const formUser = document.forms.editProfile;    //определим форму
   for (let input in data) {                       // переберём ключи в объекте
-    formUser.elements[input].value = data[input]; //заменим значения полей ввода в форме
+    formEditProfile.elements[input].value = data[input]; //заменим значения полей ввода в форме
   }
 };
 
@@ -203,6 +204,7 @@ buttonEditProfile.addEventListener("click", () => {
   formEditProfileValidator.resetValidation();
   popupEditProfile.open();
   getUserData();
+  renderLoading(true, formEditProfile);
 });
 
 buttonAddPlace.addEventListener("click", () => {
