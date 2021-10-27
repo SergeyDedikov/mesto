@@ -92,7 +92,29 @@ function createCard(data) {
             })
         );
       },
-      handleLikeClick: (btnLike) => {
+      handleLikeClick: (btnLike, cardId, isLiked) => {
+        console.log("До:", isLiked);
+        api.changeLikeCardStatus(cardId, isLiked)
+          .then((res) => {
+            !card.counterLikes(res.likes);
+            if (!card.isLiked()) {
+              btnLike.classList.add("card__button-like_active");
+            } else {
+              btnLike.classList.remove("card__button-like_active");
+            };
+            return res;
+          }).then((res) => {
+
+            return res;
+          }).then((res) => {
+            console.log("После:", !card.isLiked());
+            !card.isLiked();
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      },
+/*       handleLikeClick: (btnLike) => {
         if (btnLike.classList.contains("card__button-like_active")) {
           api
             .deleteLike(data)
@@ -119,7 +141,7 @@ function createCard(data) {
             });
         }
       },
-    },
+ */    },
     "#card-template",
     myId
   );

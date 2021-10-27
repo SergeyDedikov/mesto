@@ -78,9 +78,9 @@ export default class Api {
     }).then(this._checkResult);
   }
 
-  addLike(cardData) {
+  _addLike(cardId) {
     return fetch(
-      `${this._apiUrl}/v1/${this._cohortId}/cards/likes/${cardData._id}`,
+      `${this._apiUrl}/v1/${this._cohortId}/cards/likes/${cardId}`,
       {
         method: "PUT",
         headers: {
@@ -91,9 +91,9 @@ export default class Api {
     ).then(this._checkResult);
   }
 
-  deleteLike(cardData) {
+  _deleteLike(cardId) {
     return fetch(
-      `${this._apiUrl}/v1/${this._cohortId}/cards/likes/${cardData._id}`,
+      `${this._apiUrl}/v1/${this._cohortId}/cards/likes/${cardId}`,
       {
         method: "DELETE",
         headers: {
@@ -102,5 +102,13 @@ export default class Api {
         },
       }
     ).then(this._checkResult);
+  }
+
+  changeLikeCardStatus(cardId, isLiked) {
+    if (!isLiked) {
+      return this._addLike(cardId);
+    } else {
+      return this._deleteLike(cardId);
+    }
   }
 }

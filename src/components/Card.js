@@ -7,7 +7,7 @@ export default class Card {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
-    //this._cardId = data._id;
+    this._cardId = data._id;
     this._selector = selector;
     this._myId = myId.id;
     this._cardOwnerId = data.owner._id;
@@ -47,7 +47,8 @@ export default class Card {
   };
 
   _likeCard = (evt) => {
-    this._handleLikeClick(evt.target);
+    console.log(this.isLiked());
+    this._handleLikeClick(evt.target, this._cardId, this.isLiked());
   };
 
   _removeCardHandler = () => {
@@ -57,26 +58,13 @@ export default class Card {
   generateCard() {
     this._element = this._getElement();
     this._setEventListeners();
+    this.counterLikes(this._likes);
+    this._checkMyLike();
 
     const cardImage = this._element.querySelector(".card__photo");
     cardImage.src = this._link;
     cardImage.alt = "На фотографии: " + this._name;
     this._element.querySelector(".card__description").textContent = this._name;
-
-    // счётчик лайков
-    const countLikes = this._element.querySelector(".card__likes-count");
-    countLikes.textContent = this._likes.length;
-
-    //проверим массив лайков на наличие нашего
-    this._likes.forEach((item) => {
-      //если наш id в списке, то меняем кнопку
-      if (item._id === this._myId) {
-        this._element
-          .querySelector(".card__button-like")
-          .classList.add("card__button-like_active");
-      }
-    });
-
     // иконка удаления удалится, если myId не мой
     if (this._cardOwnerId !== this._myId) {
       this._element.querySelector(".card__button-remove").remove();
@@ -84,5 +72,35 @@ export default class Card {
 
     // Вернём элемент наружу
     return this._element;
+  }
+
+  counterLikes(likes) {
+    // счётчик лайков
+    const countLikes = this._element.querySelector(".card__likes-count");
+    countLikes.textContent = likes.length;
+  }
+
+  isLiked() {
+    //найдём в массиве лайков наличие нашего
+    let res;
+    this._likes.forEach((item) => {
+      //если наш id в списке, то сохраним true
+      if (item._id === this._myId) {
+        return (res = true);
+      } else if (undefined) {
+        return (res = false);
+      }
+      return (res = false);
+    });
+    //console.log(res); // почему-то здесь в какие-то моменты undefined
+    return res;
+  }
+
+  _checkMyLike() {
+    if (this.isLiked()) {
+      this._element
+        .querySelector(".card__button-like")
+        .classList.add("card__button-like_active");
+    }
   }
 }
