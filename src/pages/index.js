@@ -27,27 +27,12 @@ import Api from "../components/Api";
 
 const api = new Api(apiConfig);
 
-/** Forms Validation */
-
-const formEditProfileValidator = new FormValidator(
-  validConfig,
-  formEditProfile
-);
-formEditProfileValidator.enableValidation();
-
-const formAddPlaceValidator = new FormValidator(validConfig, formAddPlace);
-formAddPlaceValidator.enableValidation();
-
-const formEditAvatarValidator = new FormValidator(validConfig, formEditAvatar);
-formEditAvatarValidator.enableValidation();
-
-/** UserProfile && Form */
+/** UserProfile Functions */
 
 const userInfo = new UserInfo(".profile__name", ".profile__job");
 
-const apiUserInfo = api.getUserInfo();
-
-apiUserInfo
+api
+  .getUserInfo()
   .then((info) => {
     userInfo.setUserInfo({
       //получим данные пользователя от сервера
@@ -72,19 +57,17 @@ const popupEditProfile = new PopupWithForm(
       .catch((err) => {
         console.log(err);
       });
-      // приделать finally c чем-то
+    // приделать finally c чем-то
   }
 );
 
-function getUserData() {
-  //обработчик данных о пользователе
-  const data = userInfo.getUserInfo(); //получаем объект с данными
-  const formUser = document.forms.editProfile; //определим форму
-  for (let input in data) {
-    // переберём ключи в объекте
+function getUserData() {                          //обработчик данных о пользователе
+  const data = userInfo.getUserInfo();            //получаем объект с данными
+  const formUser = document.forms.editProfile;    //определим форму
+  for (let input in data) {                       // переберём ключи в объекте
     formUser.elements[input].value = data[input]; //заменим значения полей ввода в форме
   }
-}
+};
 
 /** Cards Functions */
 
@@ -197,6 +180,20 @@ const popupEditAvatar = new PopupWithForm(
       });
   }
 );
+
+/** Forms Validation */
+
+const formEditProfileValidator = new FormValidator(
+  validConfig,
+  formEditProfile
+);
+formEditProfileValidator.enableValidation();
+
+const formAddPlaceValidator = new FormValidator(validConfig, formAddPlace);
+formAddPlaceValidator.enableValidation();
+
+const formEditAvatarValidator = new FormValidator(validConfig, formEditAvatar);
+formEditAvatarValidator.enableValidation();
 
 /** EventListeners */
 
