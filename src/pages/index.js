@@ -41,7 +41,7 @@ api
       job: info.about,
     });
     avatarUser.src = info.avatar;
-    myId.id = info._id;
+    myId.id = info._id; //сохраним свой ID
   })
   .catch((err) => {
     console.log(err);
@@ -65,7 +65,6 @@ const popupEditProfile = new PopupWithForm(
 
 function getUserData() {                          //обработчик данных о пользователе
   const data = userInfo.getUserInfo();            //получаем объект с данными
-  const formUser = document.forms.editProfile;    //определим форму
   for (let input in data) {                       // переберём ключи в объекте
     formEditProfile.elements[input].value = data[input]; //заменим значения полей ввода в форме
   }
