@@ -6,9 +6,9 @@ export default class PopupWithConfirmation extends Popup {
     this._form = this._popup.querySelector(".popup__form");
   }
 
-exec(obj) {
-  this._func = obj;
-};
+  exec(obj) {
+    this._func = obj;
+  }
 
   setEventListeners() {
     super.setEventListeners();
