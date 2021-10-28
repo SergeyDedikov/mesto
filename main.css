@@ -20,7 +20,7 @@
 .popup_type_card{background-color:rgba(0,0,0,.9)}
 .popup__container{background:#fff;border-radius:10px;box-shadow:0 0 25px rgba(0,0,0,.15);box-sizing:border-box;padding:35px;position:relative;width:430px;z-index:3}@media screen and (max-width:860px){.popup__container{width:50%}}@media screen and (max-width:600px){.popup__container{padding:22px;width:282px}}
 .popup__heading{color:#000;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0}@media screen and (max-width:600px){.popup__heading{font-size:18px;line-height:22px;margin-top:3px}}
-.popup__input-container{border:none;margin:48px 0;padding:0}@media screen and (max-width:600px){.popup__input-container{margin-bottom:45px;margin-top:75px}}
+.popup__input-container{border:none;margin:48px 0 0;padding:0}@media screen and (max-width:600px){.popup__input-container{margin-top:75px}}
 .popup__field{display:block;margin:0 0 30px;position:relative}.popup__field:last-of-type{margin-bottom:0}
 .popup__input{background-color:transparent;border:0;border-bottom:1px solid rgba(0,0,0,.2);box-sizing:border-box;color:#000;font-family:inherit;font-size:14px;font-weight:400;line-height:17px;margin:0;outline-style:none;padding:0 0 8px;width:100%}.popup__input::-moz-placeholder{color:#c4c4c4}.popup__input:-ms-input-placeholder{color:#c4c4c4}.popup__input::placeholder{color:#c4c4c4}
 .popup__input_type_error{border-bottom-color:red}
@@ -29,7 +29,8 @@
 .popup__card{background:transparent;border:none;margin:0;max-width:75vw;padding:0;position:relative}
 .popup__card-image{display:block;max-height:75vh;-o-object-fit:contain;object-fit:contain;width:100%}
 .popup__card-description{font-size:12px;font-style:normal;font-weight:400;line-height:15px;margin:10px 0 0}
-.popup__button{background-color:#000;border-radius:2px;color:#fff;font-size:18px;font-weight:400;line-height:22px;min-height:50px;text-align:center;width:100%}.popup__button:hover{opacity:.8}@media screen and (max-width:600px){.popup__button{font-size:14px;line-height:17px;min-height:46px}}
+.popup__button{background-color:#000;border-radius:2px;color:#fff;font-size:18px;font-weight:400;line-height:22px;margin-top:48px;min-height:50px;text-align:center;width:100%}.popup__button:hover{opacity:.8}@media screen and (max-width:600px){.popup__button{font-size:14px;line-height:17px;min-height:46px}}
+.popup__button_confirm{margin-top:32px}
 .popup__button_disabled{background:#fff;border:1px solid #000;color:#000;opacity:.2;pointer-events:none}
 .popup__close{background:50%/contain no-repeat url(039f1f5203f653b4bacd.svg);height:32px;position:absolute;right:-40px;top:-40px;width:32px}@media screen and (max-width:600px){.popup__close{height:20px;right:0;top:-36px;width:20px}}
 .cards{margin:50px 0 0}@media screen and (max-width:460px){.cards{margin-top:36px}}
