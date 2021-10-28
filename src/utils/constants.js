@@ -9,7 +9,7 @@ const buttonEditAvatar = document.querySelector(".profile__button_type_avatar");
 const formEditProfile = document.querySelector(".popup__form_edit-profile");
 const formEditAvatar = document.querySelector(".popup__form_edit-avatar");
 const avatarUser = document.querySelector(".profile__avatar");
-const myId = {};
+const myId = {id: ''};
 
 /** Add Place Constants */
 
