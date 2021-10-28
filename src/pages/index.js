@@ -50,6 +50,7 @@ api
 const popupEditProfile = new PopupWithForm(
   ".popup_type_edit-profile",
   (userData) => {
+    renderLoading(true, formEditProfile);
     api
       .setUserInfo(userData)
       .then(() => {
@@ -57,7 +58,9 @@ const popupEditProfile = new PopupWithForm(
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(renderLoading(false, formEditProfile))
+      ;
     // приделать finally c чем-то
   }
 );
@@ -204,7 +207,6 @@ buttonEditProfile.addEventListener("click", () => {
   formEditProfileValidator.resetValidation();
   popupEditProfile.open();
   getUserData();
-  renderLoading(true, formEditProfile);
 });
 
 buttonAddPlace.addEventListener("click", () => {
