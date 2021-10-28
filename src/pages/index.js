@@ -59,7 +59,7 @@ const popupEditProfile = new PopupWithForm(
       .catch((err) => {
         console.log(err);
       })
-      .finally(renderLoading(false, formEditProfile))
+      //.finally(renderLoading(false, formEditProfile))
       ;
     // приделать finally c чем-то
   }
