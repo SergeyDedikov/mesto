@@ -50,7 +50,7 @@ api
 const popupEditProfile = new PopupWithForm(
   ".popup_type_edit-profile",
   (userData) => {
-    renderLoading(true, formEditProfile);
+    renderLoading(formEditProfile, "Сохранение...");
     api
       .setUserInfo(userData)
       .then(() => {
@@ -59,9 +59,7 @@ const popupEditProfile = new PopupWithForm(
       .catch((err) => {
         console.log(err);
       })
-      //.finally(renderLoading(false, formEditProfile))
-      ;
-    // приделать finally c чем-то
+      .finally(renderLoading(formEditProfile, "Сохранить"));
   }
 );
 
