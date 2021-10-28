@@ -1,4 +1,4 @@
-# Практическая работа №8: Место
+# Практическая работа №9: Место
 
 - Описание
 - Особенности
@@ -8,78 +8,60 @@
 
 **Описание**
 
-Практическая работа №8 курса "Веб-разработчик" Яндекс.Практикума — продолжение разработки проекта **"Место"**, c дальнейшим изучением классов в языке программирования **JavaScript**.
-
-В этой работе создали новые классы:
-- для каждого попапа;
-- для блока с информацией о пользователе;
-- класс-слой для взаимодействия других классов.
+Практическая работа №9 курса "Веб-разработчик" Яндекс.Практикума — продолжение разработки проекта **"Место"**, c дальнейшим изучением **JavaScript**.
 
 ---
 
 **Особенности**
 
-Класс Card претерпел изменения: теперь обработчик клика по изображению для вызова превью передаёт объект в глобальную область, тем самым, избавились от импорта в класс необходимых для этого переменных.
+В этой работе мы познакомились с асинхронностью, промисами и технологией API.
+Подключили свой проект к серверу. Теперь все изменения на странице сохраняются.
+
+Создан новый класс API, который отвечает за все запросы к серверу.
 
 ```javascript
-_openPopup = () => {
-    this._handleCardClick({
-      //передадим объект во внешнюю функцию
-      text: this._name,
-      link: this._link,
-    });
-  };
-```
-
-Теперь карточки отрисовываются на страницу посредством класса Section:
-
-```javascript
-const cardList = new Section(
-  {
-    items: initCards,
-    renderer: (cardItem) => {
-      cardList.addItem(renderCard(cardItem));
-    },
-  },
-  cardsContainer
-);
-
-cardList.renderItems();
-```
-
-Более хитроумно получаем информацию о пользователе со страницы и отображаем в полях ввода данных в соответсвующей форме при открытии последней:
-
-```javascript
-const userInfo = new UserInfo(".profile__name", ".profile__job");
-
-function getUserData() {                           //обработчик данных о пользователе
-  const data = userInfo.getUserInfo();             //получаем объект с данными
-  for (let input in data) {                        // переберём ключи в объекте
-    const formUser = document.forms.editProfile;   //определим форму
-    formUser.elements[input].value = data[input];  //заменим значения полей ввода в форме
+getInitialCards() {
+    return fetch(`${this._apiUrl}/v1/${this._cohortId}/cards`, {
+      method: "GET",
+      headers: this._headers,
+    }).then(this._checkResult);
   }
-}
 ```
 
-И самое важное изменение в проекте — **инициализация npm и настройка Webpack.**
-Теперь происходит сборка и минимизация кода в три файла HTML, CSS и JS c необходимыми изображениами в одной директории.
+Через запросы API мы получаем данные о пользователе, о карточках и их лайках. Теперь количество лайков отображается на каждой карточке.
 
 ```javascript
-{
-  "name": "mesto",
-  "version": "1.0.0",
-  "description": "sprint8",
-  "main": "index.js",
-  "scripts": {
-    "build": "webpack --mode production",
-    "dev": "webpack serve"
-  },
-  "author": "Serega Dedikov",
-  "license": "YNDX",
-  "devDependencies": {
-    "@babel/core": "^7.15.5",
-    "@babel/preset-env": "^7.15.6",
-    ...
+counterLikes(likes) {
+    // счётчик лайков
+    const countLikes = this._element.querySelector(".card__likes-count");
+    countLikes.textContent = likes.length;
+  }
+```
+
+Добавилась возможность изменять аватар пользователя через новую форму.
+
+```javascript
+const popupEditAvatar = new PopupWithForm(
+  ".popup_type_edit-avatar",
+  ({ avatar }) => {
+    const data = { avatar: avatar };
+    renderLoading(formEditAvatar, "Сохранение...");
+    api
+      .changeAvatar(data)
+      .then((res) => {
+        avatarUser.src = res.avatar;
+      })
+```
+
+Удаление карточки происходит только нашей, поэтому иконка корзины не отображается на чужих карточках.
+
+```javascript
+  _checkMyCard() {
+    // иконка удаления удалится, если myId не мой
+    if (this._cardOwnerId !== this._myId) {
+      this._element.querySelector(".card__button-remove").remove();
+    }
+  }
 ```
 
 ---
