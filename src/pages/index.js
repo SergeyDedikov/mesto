@@ -113,6 +113,26 @@ Promise.all([promiseUserInfo, promiseCards])
 
 /** All Forms */
 
+const popupEditAvatar = new PopupWithForm(
+  ".popup_type_edit-avatar",
+  ({ avatar }) => {
+    const data = { avatar: avatar };
+    popupEditAvatar.renderLoading("Сохранение...");
+    api
+      .changeAvatar(data)
+      .then((userData) => {
+        userInfo.setAvatar(userData);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        popupEditAvatar.close();
+        setTimeout(() => popupEditAvatar.renderLoading("Сохранить"), 500);
+      });
+  }
+);
+
   const popupEditProfile = new PopupWithForm(
     ".popup_type_edit-profile",
     (userData) => {
@@ -151,26 +171,6 @@ const popupAddPlace = new PopupWithForm(
       .finally(() => {
         popupAddPlace.close();
         setTimeout(() => popupAddPlace.renderLoading("Создать"), 500);
-      });
-  }
-);
-
-const popupEditAvatar = new PopupWithForm(
-  ".popup_type_edit-avatar",
-  ({ avatar }) => {
-    const data = { avatar: avatar };
-    popupEditAvatar.renderLoading("Сохранение...");
-    api
-      .changeAvatar(data)
-      .then((userData) => {
-        userInfo.setAvatar(userData);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        popupEditAvatar.close();
-        setTimeout(() => popupEditAvatar.renderLoading("Сохранить"), 500);
       });
   }
 );
