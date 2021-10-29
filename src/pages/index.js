@@ -2,7 +2,6 @@ import "./index.css";
 
 import {
   cardsContainer,
-  avatarUser,
   myId,
   buttonEditAvatar,
   buttonEditProfile,
