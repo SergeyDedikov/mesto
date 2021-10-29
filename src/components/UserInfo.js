@@ -14,21 +14,12 @@ export default class UserInfo {
     this._avatar.src = data.avatar;
   }
 
-  _setMyId(data) {
-    this._myId = data._id;
-  }
-
   setFullUserInfo(data) {
     this.setUserInfo({
       name: data.name,
       job: data.about,
     });
     this._setAvatar(data);
-    this._setMyId(data);
-  }
-
-  getMyId() {
-    return this._myId;
   }
 
   getUserInfo() {

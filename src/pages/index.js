@@ -37,12 +37,13 @@ const userInfo = new UserInfo(
 
 api
   .getUserInfo()
-  .then((userData) => userInfo.setFullUserInfo(userData))
+  .then((userData) => {
+    userInfo.setFullUserInfo(userData);
+    //myId = userData._id;
+  })
   .catch((err) => {
     console.log(err);
   });
-
-console.log(userInfo.getMyId());
 
 const popupEditProfile = new PopupWithForm(
   ".popup_type_edit-profile",
