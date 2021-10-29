@@ -6,8 +6,8 @@ export default class PopupWithConfirmation extends Popup {
     this._form = this._popup.querySelector(".popup__form");
   }
 
-  exec(obj) {
-    this._func = obj;
+  exec(handler) {
+    this._func = handler;
   }
 
   setEventListeners() {
@@ -16,7 +16,6 @@ export default class PopupWithConfirmation extends Popup {
       evt.preventDefault();
 
       this._func();
-      this.close();
     });
   }
 }
