@@ -29,22 +29,20 @@ const api = new Api(apiConfig);
 
 /** UserProfile Functions */
 
-const userInfo = new UserInfo(".profile__name", ".profile__job");
+const userInfo = new UserInfo(
+  ".profile__name",
+  ".profile__job",
+  ".profile__avatar"
+);
 
 api
   .getUserInfo()
-  .then((info) => {
-    userInfo.setUserInfo({
-      //получим данные пользователя от сервера
-      name: info.name,
-      job: info.about,
-    });
-    avatarUser.src = info.avatar;
-    myId.id = info._id; //сохраним свой ID
-  })
+  .then((userData) => userInfo.setFullUserInfo(userData))
   .catch((err) => {
     console.log(err);
   });
+
+console.log(userInfo.getMyId());
 
 const popupEditProfile = new PopupWithForm(
   ".popup_type_edit-profile",
@@ -53,6 +51,7 @@ const popupEditProfile = new PopupWithForm(
     api
       .setUserInfo(userData)
       .then(() => {
+        console.log(userData);
         userInfo.setUserInfo(userData);
       })
       .catch((err) => {
@@ -65,12 +64,14 @@ const popupEditProfile = new PopupWithForm(
   }
 );
 
-function getUserData() {                          //обработчик данных о пользователе
-  const data = userInfo.getUserInfo();            //получаем объект с данными
-  for (let input in data) {                       // переберём ключи в объекте
+function getUserData() {
+  //обработчик данных о пользователе
+  const data = userInfo.getUserInfo(); //получаем объект с данными
+  for (let input in data) {
+    // переберём ключи в объекте
     formEditProfile.elements[input].value = data[input]; //заменим значения полей ввода в форме
   }
-};
+}
 
 /** Cards Functions */
 
