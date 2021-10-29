@@ -50,7 +50,7 @@ api
 const popupEditProfile = new PopupWithForm(
   ".popup_type_edit-profile",
   (userData) => {
-    renderLoading(formEditProfile, "Сохранение...");
+    formEditProfile.renderLoading("Сохранение...");
     api
       .setUserInfo(userData)
       .then(() => {
@@ -59,7 +59,10 @@ const popupEditProfile = new PopupWithForm(
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => renderLoading(formEditProfile, "Сохранить"));
+      .finally(() => {
+        formEditProfile.close();
+        formEditProfile.renderLoading("Сохранить");
+      });
   }
 );
 
@@ -151,7 +154,7 @@ const popupAddPlace = new PopupWithForm(
       name: place,
       link: link,
     };
-    renderLoading(formAddPlace, "Сохранение...");
+    formAddPlace.renderLoading("Сохранение...");
     api
       .addNewCard(data)
       .then((res) => {
@@ -160,7 +163,10 @@ const popupAddPlace = new PopupWithForm(
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => renderLoading(formAddPlace, "Создать"));
+      .finally(() => {
+        formAddPlace.close();
+        formAddPlace.renderLoading("Создать");
+      });
   }
 );
 
@@ -170,7 +176,7 @@ const popupEditAvatar = new PopupWithForm(
   ".popup_type_edit-avatar",
   ({ avatar }) => {
     const data = { avatar: avatar };
-    renderLoading(formEditAvatar, "Сохранение...");
+    formEditAvatar.renderLoading("Сохранение...");
     api
       .changeAvatar(data)
       .then((res) => {
@@ -179,7 +185,10 @@ const popupEditAvatar = new PopupWithForm(
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => renderLoading(formEditAvatar, "Сохранить"));
+      .finally(() => {
+        formEditAvatar.close();
+        formEditAvatar.renderLoading("Сохранить");
+      });
   }
 );
 
