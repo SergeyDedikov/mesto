@@ -10,12 +10,16 @@ export default class UserInfo {
     this._job.textContent = job;
   }
 
+  setAvatar(data) {
+    this._avatar.src = data.avatar;
+  }
+
   setFullUserInfo(data) {
     this.setUserInfo({
       name: data.name,
       job: data.about,
     });
-    this._avatar.src = data.avatar;
+    this.setAvatar(data);
   }
 
   getUserInfo() {

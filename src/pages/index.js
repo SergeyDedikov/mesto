@@ -162,8 +162,9 @@ const popupEditAvatar = new PopupWithForm(
     popupEditAvatar.renderLoading("Сохранение...");
     api
       .changeAvatar(data)
-      .then((res) => {
-        avatarUser.src = res.avatar;
+      .then((userData) => {
+        userInfo.setAvatar(userData);
+        //avatarUser.src = userData.avatar;
       })
       .catch((err) => {
         console.log(err);
