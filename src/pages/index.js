@@ -164,7 +164,6 @@ const popupEditAvatar = new PopupWithForm(
       .changeAvatar(data)
       .then((userData) => {
         userInfo.setAvatar(userData);
-        //avatarUser.src = userData.avatar;
       })
       .catch((err) => {
         console.log(err);
