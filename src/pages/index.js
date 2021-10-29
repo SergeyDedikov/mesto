@@ -84,6 +84,15 @@ function createCard(data) {
   return card.generateCard();
 }
 
+const cardList = new Section(
+  {
+    renderer: (card) => {
+      cardList.addItem(createCard(card));
+    },
+  },
+  cardsContainer
+);
+
 /** API Promises */
 
 const promiseUserInfo = api.getUserInfo();
@@ -96,16 +105,7 @@ Promise.all([promiseUserInfo, promiseCards])
     myId.id = userData._id;
 
     const cards = values[1];       //данные всех карточек
-    const cardList = new Section(
-      {
-        items: cards,
-        renderer: (cardItem) => {
-          cardList.addItem(createCard(cardItem));
-        },
-      },
-      cardsContainer
-    );
-    cardList.renderItems();
+    cardList.renderItems(cards);
   })
   .catch((err) => {
     console.log(err);
@@ -143,7 +143,7 @@ const popupAddPlace = new PopupWithForm(
     api
       .addNewCard(data)
       .then((res) => {
-        cardsContainer.prepend(createCard(res));
+        cardList.prependItem(createCard(res));
       })
       .catch((err) => {
         console.log(err);
