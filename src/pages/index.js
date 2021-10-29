@@ -22,7 +22,6 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation";
 import Api from "../components/Api";
-import renderLoading from "../utils/renderLoading.js";
 
 /** API */
 
@@ -50,7 +49,7 @@ api
 const popupEditProfile = new PopupWithForm(
   ".popup_type_edit-profile",
   (userData) => {
-    formEditProfile.renderLoading("Сохранение...");
+    popupEditProfile.renderLoading("Сохранение...");
     api
       .setUserInfo(userData)
       .then(() => {
@@ -60,8 +59,8 @@ const popupEditProfile = new PopupWithForm(
         console.log(err);
       })
       .finally(() => {
-        formEditProfile.close();
-        formEditProfile.renderLoading("Сохранить");
+        popupEditProfile.close();
+        setTimeout(() => popupEditProfile.renderLoading("Сохранить"), 500);
       });
   }
 );
@@ -154,7 +153,7 @@ const popupAddPlace = new PopupWithForm(
       name: place,
       link: link,
     };
-    formAddPlace.renderLoading("Сохранение...");
+    popupAddPlace.renderLoading("Сохранение...");
     api
       .addNewCard(data)
       .then((res) => {
@@ -164,8 +163,8 @@ const popupAddPlace = new PopupWithForm(
         console.log(err);
       })
       .finally(() => {
-        formAddPlace.close();
-        formAddPlace.renderLoading("Создать");
+        popupAddPlace.close();
+        setTimeout(() => popupAddPlace.renderLoading("Создать"), 500);
       });
   }
 );
@@ -176,7 +175,7 @@ const popupEditAvatar = new PopupWithForm(
   ".popup_type_edit-avatar",
   ({ avatar }) => {
     const data = { avatar: avatar };
-    formEditAvatar.renderLoading("Сохранение...");
+    popupEditAvatar.renderLoading("Сохранение...");
     api
       .changeAvatar(data)
       .then((res) => {
@@ -186,8 +185,8 @@ const popupEditAvatar = new PopupWithForm(
         console.log(err);
       })
       .finally(() => {
-        formEditAvatar.close();
-        formEditAvatar.renderLoading("Сохранить");
+        popupEditAvatar.close();
+        setTimeout(() => popupEditAvatar.renderLoading("Сохранить"), 500);
       });
   }
 );
