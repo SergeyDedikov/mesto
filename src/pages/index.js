@@ -91,6 +91,7 @@ function createCard(data) {
             .catch((err) => {
               console.log(err);
             })
+            .finally(() => popupConfirmation.close())
         );
       },
       handleLikeClick: (btnLike) => {
