@@ -23,56 +23,13 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation";
 import Api from "../components/Api";
 
-/** API */
-
 const api = new Api(apiConfig);
-
-/** UserProfile Functions */
 
 const userInfo = new UserInfo(
   ".profile__name",
   ".profile__job",
   ".profile__avatar"
 );
-
-api
-  .getUserInfo()
-  .then((userData) => {
-    userInfo.setFullUserInfo(userData);
-    myId.id = userData._id;
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-const popupEditProfile = new PopupWithForm(
-  ".popup_type_edit-profile",
-  (userData) => {
-    popupEditProfile.renderLoading("Сохранение...");
-    api
-      .setUserInfo(userData)
-      .then(() => {
-        console.log(userData);
-        userInfo.setUserInfo(userData);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        popupEditProfile.close();
-        setTimeout(() => popupEditProfile.renderLoading("Сохранить"), 500);
-      });
-  }
-);
-
-function getUserData() {
-  //обработчик данных о пользователе
-  const data = userInfo.getUserInfo(); //получаем объект с данными
-  for (let input in data) {
-    // переберём ключи в объекте
-    formEditProfile.elements[input].value = data[input]; //заменим значения полей ввода в форме
-  }
-}
 
 /** Cards Functions */
 
@@ -128,9 +85,18 @@ function createCard(data) {
   return card.generateCard();
 }
 
-api
-  .getInitialCards()
-  .then((cards) => {
+/** API Promises */
+
+const promiseUserInfo = api.getUserInfo();
+const promiseCards = api.getInitialCards();
+
+Promise.all([promiseUserInfo, promiseCards])
+  .then((values) => {             //получим массив всех запросов
+    const userData = values[0];   //данные пользователя
+    userInfo.setFullUserInfo(userData);
+    myId.id = userData._id;
+
+    const cards = values[1];       //данные всех карточек
     const cardList = new Section(
       {
         items: cards,
@@ -146,7 +112,26 @@ api
     console.log(err);
   });
 
-/** Form AddPlace */
+/** All Forms */
+
+  const popupEditProfile = new PopupWithForm(
+    ".popup_type_edit-profile",
+    (userData) => {
+      popupEditProfile.renderLoading("Сохранение...");
+      api
+        .setUserInfo(userData)
+        .then(() => {
+          userInfo.setUserInfo(userData);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          popupEditProfile.close();
+          setTimeout(() => popupEditProfile.renderLoading("Сохранить"), 500);
+        });
+    }
+  );
 
 const popupAddPlace = new PopupWithForm(
   ".popup_type_add-place",
@@ -171,8 +156,6 @@ const popupAddPlace = new PopupWithForm(
   }
 );
 
-/** Form Edit Avatar */
-
 const popupEditAvatar = new PopupWithForm(
   ".popup_type_edit-avatar",
   ({ avatar }) => {
@@ -192,6 +175,13 @@ const popupEditAvatar = new PopupWithForm(
       });
   }
 );
+
+function getUserData() {                   //обработчик данных о пользователе
+  const data = userInfo.getUserInfo();     //получаем объект с данными
+  for (let input in data) {                // переберём ключи в объекте
+    formEditProfile.elements[input].value = data[input]; //заменим значения полей ввода в форме
+  }
+}
 
 /** Forms Validation */
 
