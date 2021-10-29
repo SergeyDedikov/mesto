@@ -39,7 +39,7 @@ api
   .getUserInfo()
   .then((userData) => {
     userInfo.setFullUserInfo(userData);
-    //myId = userData._id;
+    myId.id = userData._id;
   })
   .catch((err) => {
     console.log(err);
