@@ -47,11 +47,11 @@ function createCard(data) {
             .deleteCard(data)
             .then(() => {
               card.remove();
+              popupConfirmation.close();
             })
             .catch((err) => {
               console.log(err);
             })
-            .finally(() => popupConfirmation.close())
         );
       },
       handleLikeClick: (btnLike) => {
@@ -122,35 +122,31 @@ const popupEditAvatar = new PopupWithForm(
       .changeAvatar(data)
       .then((userData) => {
         userInfo.setAvatar(userData);
+        popupEditAvatar.close();
       })
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => {
-        popupEditAvatar.close();
-        setTimeout(() => popupEditAvatar.renderLoading("Сохранить"), 500);
-      });
+      .finally(() => popupEditAvatar.renderLoading("Сохранить"));
   }
 );
 
-  const popupEditProfile = new PopupWithForm(
-    ".popup_type_edit-profile",
-    (userData) => {
-      popupEditProfile.renderLoading("Сохранение...");
-      api
-        .setUserInfo(userData)
-        .then(() => {
-          userInfo.setUserInfo(userData);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally(() => {
-          popupEditProfile.close();
-          setTimeout(() => popupEditProfile.renderLoading("Сохранить"), 500);
-        });
-    }
-  );
+const popupEditProfile = new PopupWithForm(
+  ".popup_type_edit-profile",
+  (userData) => {
+    popupEditProfile.renderLoading("Сохранение...");
+    api
+      .setUserInfo(userData)
+      .then(() => {
+        userInfo.setUserInfo(userData);
+        popupEditProfile.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => popupEditProfile.renderLoading("Сохранить"));
+  }
+);
 
 const popupAddPlace = new PopupWithForm(
   ".popup_type_add-place",
@@ -164,14 +160,12 @@ const popupAddPlace = new PopupWithForm(
       .addNewCard(data)
       .then((res) => {
         cardList.prependItem(createCard(res));
+        popupAddPlace.close();
       })
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => {
-        popupAddPlace.close();
-        setTimeout(() => popupAddPlace.renderLoading("Создать"), 500);
-      });
+      .finally(() => popupAddPlace.renderLoading("Создать"));
   }
 );
 
